@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_5dp_d8bd7a"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_store_coupon"
+                android:textColor="@color/white"
+                android:layout_marginRight="14dp"
+                android:textSize="13sp" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fl_coupon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="2dp"
+                app:alignContent="flex_start"
+                app:alignItems="flex_start"
+                app:flexWrap="nowrap" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:src="@mipmap/sharemall_bg_floor_coupon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_collect"
+                android:textColor="#ffffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

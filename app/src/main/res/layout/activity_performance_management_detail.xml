@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.vip.PerformanceManagementDetailActivity">
+    <data>
+
+        <variable
+            name="data"
+            type="com.liemi.seashellmallclient.data.entity.order.OrderRebateEntity" />
+        <variable
+            name="level"
+            type="Integer" />
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context="com.netmi.sharemall.ui.vip.VIPIncomeDetailActivity">
+
+            <include layout="@layout/sharemall_include_title_bar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    civPath="@{data.head_url}"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/baselib_bg_default_circle_pic" />
+
+                <TextView
+                    android:id="@+id/tv_name_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_head"
+                    android:text="@string/sharemall_create_order_user"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name_tips"
+                    android:layout_alignLeft="@id/tv_name_tips"
+                    android:singleLine="true"
+                    android:text="@{data.nickname}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp"
+                    tools:text="3C设计" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:text="@{data.shop.name}"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp"
+                tools:text="店铺名称" />
+
+            <com.liemi.seashellmallclient.widget.MyRecyclerView
+                android:id="@+id/rv_goods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/sharemall_format_total_good(data.total_item_num)}"
+                    android:textColor="#ff1d1e1f"
+                    android:textSize="14sp"
+                    tools:text="共1件商品" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/sharemall_actual_total"
+                    android:textColor="#ff999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.formatMoney(data.total_item_price)}"
+                    android:textColor="#ff999999"
+                    android:textSize="14sp"
+                    tools:text="12331" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_vip_about_earns2"
+                    android:textColor="#ff1d1e1f"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@{data.formatMoney(data.total_price)}"
+                    android:textColor="#ff999999"
+                    android:textSize="14sp"
+                    tools:text="¥15.00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_vip_refund_earns"
+                    android:textColor="#ff1d1e1f"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@{data.formatMoney(data.refund_price)}"
+                    android:textColor="#ff999999"
+                    android:textSize="14sp"
+                    tools:text="¥0.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="end|center_vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_vip_about_earns3"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp" />
+
+                <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.formatMoney(data.total_price)}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="18sp"
+                    tools:text="¥123" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/sharemall_format_order_number(data.order_no)}"
+                        android:textColor="#555555"
+                        android:textSize="13sp"
+                        tools:text="订单编号：201712201507" />
+
+                    <TextView
+                        android:id="@+id/tv_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/sharemall_radius_4dp_ff_stroke_1dp_eaeaea"
+                        android:drawableStart="@mipmap/sharemall_hair_copy_img"
+                        android:drawableLeft="@mipmap/sharemall_hair_copy_img"
+                        android:drawablePadding="6dp"
+                        android:gravity="center"
+                        android:onClick="doClick"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:text="@string/sharemall_copy"
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@{@string/sharemall_format_order_time(data.create_time)}"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(data.create_time)?View.GONE:View.VISIBLE}"
+                    tools:text="下单时间：2017-12-2015：07：00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@{@string/sharemall_format_pay_time(data.pay_time)}"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(data.pay_time)?View.GONE:View.VISIBLE}"
+                    tools:text="订单支付：2017-12-2015：07：00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@{@string/sharemall_format_settlement_time(data.settlement_time)}"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(data.settlement_time) ? View.GONE : View.VISIBLE}"
+                    tools:text="结算时间：2017-12-2015：07：00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@{@string/sharemall_format_pay_type(data.pay_name)}"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(data.pay_name) ? View.GONE : View.VISIBLE}"
+                    tools:text="支付方式：微信支付" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

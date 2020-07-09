@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mine.userinfo.ChangePhoneAuthActivity">
+    <data>
+
+        <variable
+            name="phone"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F6F6F7"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/sharemall_include_title_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <!--当前手机号码-->
+            <TextView
+                android:id="@+id/tv_current_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/sharemall_format_current_phone(phone)}"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp"
+                android:padding="16dp"
+                tools:text="当前手机号：1231313213" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE"/>
+
+            <include layout="@layout/sharemall_layout_image_code_two" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!--验证码-->
+                <EditText
+                    android:id="@+id/et_input_verification_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/sharemall_radius_5dp_stroke_1dp_f4_solid_white"
+                    android:hint="@string/sharemall_please_input_verification_code"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginVertical="6dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:textColor="@color/black_1d1e1f"
+                    android:textColorHint="@color/gray_A9"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="7dp"
+                    android:text="@string/sharemall_get_verification_code"
+                    android:textColor="@drawable/sharemall_selector_coloref574c_color999"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/basemall_radius_4dp_ef574c"
+            android:enabled="true"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="@string/sharemall_commit"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+</layout>

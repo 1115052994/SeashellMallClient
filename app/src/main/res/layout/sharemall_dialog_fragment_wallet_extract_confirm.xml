@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="walletExtract"
+            type="String" />
+
+        <variable
+            name="poundage"
+            type="String" />
+
+        <variable
+            name="id"
+            type="String" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:onClick="@{doClick}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_ltrt8dp_ff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginRight="-10dp"
+                    android:onClick="@{doClick}"
+                    android:padding="10dp"
+                    android:src="@mipmap/sharemall_ic_cancel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_extract_confirm"
+                    android:id="@+id/tv_title"
+                    android:textColor="@color/gray_33"
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_extract_limit"
+                    android:id="@+id/tv_limit"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_33"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:text="@{walletExtract}"
+                    android:textSize="14sp"
+                    tools:text="2500"
+                    android:textColor="@color/gray_33"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_poundage"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_33"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:text="@{poundage}"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_33"
+                    tools:text="123"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:id="@+id/ll_id"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_ID"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_33"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:text="@{id}"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_33"
+                    tools:text="123"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view"
+                android:visibility="gone"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="44dp"
+                android:background="@drawable/basemall_radius_10dp_gradient_ef574c"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingVertical="14dp"
+                android:text="@string/sharemall_confirm"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?><!--退款详情，退款成功-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.DateUtil" />
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.RefundDetailsEntity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp">
+        <!--退款总金额-->
+        <TextView
+            android:id="@+id/tv_refund_total_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="17dp"
+            android:paddingBottom="17dp"
+            android:text="@string/sharemall_back_money_total_num"
+            android:textColor="@color/black_1d1e1f"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="13dp"
+            android:text="@{FloatUtils.formatMoney(item.price_total)}"
+            android:textColor="@color/bgColor"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_refund_total_num"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="￥12312" />
+        <!--退款进度-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_refund_process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_refund_total_num">
+
+            <ImageView
+                android:id="@+id/iv_success1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sharemall_ic_success_gray"
+                app:layout_constraintBottom_toBottomOf="@id/tv_time1"
+                app:layout_constraintLeft_toLeftOf="@id/iv_refuse"
+                app:layout_constraintRight_toRightOf="@id/iv_refuse"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_success1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_buyer_apply"
+                android:textColor="@color/gray_33"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_refuse"
+                app:layout_constraintLeft_toRightOf="@id/iv_success1"
+                app:layout_constraintTop_toTopOf="@id/iv_success1" />
+
+            <TextView
+                android:id="@+id/tv_time1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{DateUtil.strToMMDDHHMMDate(item.create_time)}"
+                android:textColor="@color/gray_99"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_success1"
+                app:layout_constraintTop_toBottomOf="@id/tv_success1" />
+
+            <ImageView
+                android:id="@+id/view_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sharemall_ic_vetical_line"
+                app:layout_constraintLeft_toLeftOf="@id/iv_refuse"
+                app:layout_constraintRight_toRightOf="@id/iv_refuse"
+                app:layout_constraintTop_toBottomOf="@id/iv_success1" />
+
+
+            <ImageView
+                android:id="@+id/iv_success2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sharemall_ic_success_gray"
+                app:layout_constraintLeft_toLeftOf="@id/iv_refuse"
+                app:layout_constraintRight_toRightOf="@id/iv_refuse"
+                app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+            <TextView
+                android:id="@+id/tv_success2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_store_accept"
+                android:textColor="@color/gray_33"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_refuse"
+                app:layout_constraintLeft_toRightOf="@id/iv_success2"
+                app:layout_constraintTop_toTopOf="@id/iv_success2" />
+
+            <TextView
+                android:id="@+id/tv_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{DateUtil.strToMMDDHHMMDate(item.agree_time)}"
+                android:textColor="@color/gray_99"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_success2"
+                app:layout_constraintTop_toBottomOf="@id/tv_success2" />
+
+            <ImageView
+                android:id="@+id/view_line2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sharemall_ic_vetical_line"
+                app:layout_constraintLeft_toLeftOf="@id/iv_refuse"
+                app:layout_constraintRight_toRightOf="@id/iv_refuse"
+                app:layout_constraintTop_toBottomOf="@id/iv_success2" />
+
+
+            <ImageView
+                android:id="@+id/iv_refuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sharemall_ic_success_circle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_line2" />
+
+            <TextView
+                android:id="@+id/tv_refuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/sharemall_refund_success"
+                android:textColor="@color/gray_33"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_refuse"
+                app:layout_constraintLeft_toRightOf="@id/iv_refuse"
+                app:layout_constraintTop_toTopOf="@id/iv_refuse" />
+
+            <TextView
+                android:id="@+id/tv_refuse_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{DateUtil.strToMMDDHHMMDate(item.success_time)}"
+                android:textColor="@color/gray_99"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@id/tv_refuse"
+                app:layout_constraintTop_toBottomOf="@id/tv_refuse" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/view_line_process"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@drawable/sharemall_line_stroke_3dp_3dp_eeeeee"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_refund_process" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

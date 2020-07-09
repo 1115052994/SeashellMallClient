@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tl="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.good.GoodDetailPageActivity">
+    <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+            <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:onClick="doClick"
+                    android:padding="10dp"
+                    android:src="@mipmap/sharemall_icon_back_gray" />
+
+
+            <com.netmi.baselibrary.widget.SlidingTextTabLayout
+                    android:id="@+id/st_tab_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical|center"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    tl:tl_indicator_color="@color/sharemall_text_theme_main"
+                    tl:tl_indicator_height="3dp"
+                    tl:tl_indicator_width_equal_title="true"
+                    tl:tl_textSelectColor="@color/sharemall_text_theme_main"
+                    tl:tl_textUnselectColor="#b2b2b2"
+                    tl:tl_textsize="14sp" />
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/vp_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

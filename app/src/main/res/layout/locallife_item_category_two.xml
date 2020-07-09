@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.locallife.ShopTwoCateEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="11dp">
+
+        <TextView
+            android:id="@+id/tv_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@{item.name}"
+            android:textColor="#555555"
+            android:textSize="12sp"
+            android:transitionName="@string/transition_title_name" />
+    </LinearLayout>
+</layout>

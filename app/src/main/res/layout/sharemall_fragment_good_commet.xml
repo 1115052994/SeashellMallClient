@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="checkListener"
+            type="android.widget.CompoundButton.OnCheckedChangeListener" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioGroup
+            android:id="@+id/rg_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/rb_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/sharemall_selector_radius_17dp_gradient_3e4042_1d1e1f"
+                android:button="@null"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="@string/sharemall_all"
+                android:textColor="@drawable/sharemall_selector_tab_comment"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/rb_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/sharemall_selector_radius_17dp_gradient_3e4042_1d1e1f"
+                android:button="@null"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="@string/sharemall_patterned"
+                android:textColor="@drawable/sharemall_selector_tab_comment"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/tv_all" />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_commit">
+
+        </FrameLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

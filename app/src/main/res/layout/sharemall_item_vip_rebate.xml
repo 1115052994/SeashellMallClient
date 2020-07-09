@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.vip.VIPIncomeListEntity"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="74dp">
+        <TextView
+            tools:text="分享得积分"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            android:textColor="#1D1E1F"
+            android:textSize="15sp" />
+        <TextView
+            tools:text="2018.11.12 02:54：12"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="41dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.create_time}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/tv_amount"
+            android:textStyle="bold"
+            tools:text="+100"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tv_rebate_title"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.price}"
+            android:textColor="@color/bgColor"
+            android:textSize="24sp"
+            android:layout_toStartOf="@+id/tv_rebate_title" />
+        <TextView
+            android:layout_marginBottom="5dp"
+            android:layout_alignBottom="@+id/tv_amount"
+            android:layout_marginRight="15dp"
+            android:id="@+id/tv_rebate_title"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sharemall_rebate"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_alignParentEnd="true" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/theme_bg"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
+</layout>

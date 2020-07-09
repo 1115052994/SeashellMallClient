@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_image_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="5dp">
+
+            <EditText
+                android:id="@+id/et_image_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/sharemall_please_input_image_code"
+                android:inputType="textVisiblePassword"
+                android:maxLength="10"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black_1d1e1f"
+                android:textColorHint="@color/gray_A9"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/iv_image_code"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="2dp"
+                android:onClick="doClick"
+                android:src="@drawable/baselib_bg_default_pic" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/gray_EE" />
+
+    </LinearLayout>
+</layout>

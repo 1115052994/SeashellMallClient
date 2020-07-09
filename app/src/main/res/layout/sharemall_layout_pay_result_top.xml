@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <skin.support.widget.SkinCompatImageView
+                android:id="@+id/iv_success"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/sharemall_oval_56dp_ff9241"
+                android:scaleType="centerInside"
+                android:src="@mipmap/sharemall_ic_result_success"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/sharemall_pay_success"
+                android:textColor="@color/black_36"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_success" />
+
+            <skin.support.widget.SkinCompatTextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/bgColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/tv_success"
+                app:layout_constraintStart_toStartOf="@+id/tv_success"
+                app:layout_constraintTop_toBottomOf="@+id/tv_success"
+                tools:text="实付¥51.90" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price">
+
+                <skin.support.widget.SkinCompatTextView
+                    android:id="@+id/tv_back_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/sharemall_radius_21dp_stroke_1dp_ef574c"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/sharemall_back_home2"
+                    android:textColor="@color/bgColor"
+                    android:textSize="16sp" />
+
+                <skin.support.widget.SkinCompatTextView
+                    android:id="@+id/tv_read_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/sharemall_radius_21dp_stroke_1dp_ef574c"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="7dp"
+                    android:text="@string/sharemall_look_order"
+                    android:textColor="@color/bgColor"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@mipmap/sharemall_like_left"
+            android:drawableLeft="@mipmap/sharemall_like_left"
+            android:drawableEnd="@mipmap/sharemall_like_right"
+            android:drawableRight="@mipmap/sharemall_like_right"
+            android:drawablePadding="12dp"
+            android:text="@string/sharemall_guess_you_like_it"
+            android:textColor="#ff1d1e1f"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top" />
+
+        <TextView
+            android:id="@+id/tv_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/sharemall_baby_your_choice"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_top" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

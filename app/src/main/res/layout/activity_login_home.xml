@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.login.LoginHomeActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/bt_sms_login"
+                android:contentDescription="@null"
+                />
+
+            <Button
+                android:id="@+id/bt_sms_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="70dp"
+                android:background="@drawable/baselib_bg_colorff9241"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/basemall_sms_login"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/bt_pwd_login"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/bt_pwd_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="70dp"
+                android:background="@drawable/basemall_stroke_1dp_ef574c_solid_ff"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/basemall_pwd_login"
+                android:textColor="@color/bgColor"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/tv_register_quick"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_register_quick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/basemall_register_quick"
+                android:padding="5dp"
+                android:layout_marginTop="13dp"
+                android:textSize="14sp"
+                android:textColor="@color/gray_55"
+                android:onClick="doClick"
+                android:drawableLeft="@mipmap/basemall_icon_register_quick_left"
+                android:drawableRight="@mipmap/basemall_icon_quick_right"
+                android:drawablePadding="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="13dp"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

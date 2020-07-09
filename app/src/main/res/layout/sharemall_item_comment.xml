@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.CommentEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+
+    </data>
+
+    <RelativeLayout
+        setMarginTop="@{position == 0 ? @dimen/d_10 : @dimen/dp_0 }"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv_head"
+            civPath="@{item.u.head_url}"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baselib_bg_default_circle_pic" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_head"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_toStartOf="@+id/rb_star_server"
+            android:layout_toLeftOf="@+id/rb_star_server"
+            android:layout_toEndOf="@+id/iv_head"
+            android:layout_toRightOf="@+id/iv_head"
+            android:singleLine="true"
+            android:text="@{item.u.nickname}"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            tools:text="谭霞" />
+
+        <TextView
+            android:id="@+id/tv_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username"
+            android:layout_alignLeft="@id/tv_username"
+            android:layout_marginTop="4dp"
+            android:text="@{item.create_time}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            tools:text="2019-05-09" />
+
+        <com.liemi.seashellmallclient.widget.RatingBarView
+            android:id="@+id/rb_star_server"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="18dp"
+            app:editable="false"
+            app:padding_right="10dp"
+            app:starCount="5"
+            app:starEmpty="@mipmap/sharemall_ic_order_comment_unlike"
+            app:starFill="@mipmap/sharemall_light_star"
+            app:starImageSize="17dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_create_time"
+            android:layout_alignLeft="@id/tv_create_time"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:text="@{item.content}"
+            android:textColor="#ff555555"
+            android:textSize="13sp"
+            tools:text="来自热带气候秘鲁，光照更充足，果肉绵滑有淡淡乳酪香天然的“植光照更充足，果肉绵滑有淡淡乳酪光照更充……" />
+
+        <com.liemi.seashellmallclient.widget.MyRecyclerView
+            android:id="@+id/rv_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_comment_content"
+            android:layout_alignLeft="@id/tv_comment_content"
+            android:layout_marginTop="8dp"
+            android:overScrollMode="never" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rv_img">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/sharemall_radius_lbrtrb6dp_colorf8f8f8"
+                android:ellipsize="end"
+                android:maxLength="200"
+                android:padding="12dp"
+                android:text="@{@string/sharemall_format_reply(item.to_commet.content)}"
+                android:textColor="#777777"
+                android:textSize="13sp"
+                android:visibility="@{TextUtils.isEmpty(item.to_commet.content) ? View.GONE : View.VISIBLE}"
+                tools:text="掌柜回复:谢谢您的支持和信赖~在穿着过程不管您遇到任何问题、只需联系我们在线旺旺MM客服剩下的工作都由我们来做。(很高兴能您为您服务)了解PEILING培领一帮 你解开神秘面纱! PEILING培领是一.家专业从事进出口公司、也是行业有名的财阀大鳄。" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

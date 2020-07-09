@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.locallife.LocalLifeShopCommentAllActivity">
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="checkListener"
+                type="android.widget.CompoundButton.OnCheckedChangeListener" />
+    </data>
+    <LinearLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/theme_bg"
+                  android:focusableInTouchMode="true"
+                  android:orientation="vertical">
+
+        <LinearLayout
+                android:elevation="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_head"
+                android:orientation="vertical">
+            <RelativeLayout
+                    android:id="@+id/rl_title_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white">
+
+                <LinearLayout
+                        android:id="@+id/ll_back"
+                        android:layout_width="@dimen/d_50"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:onClick="doClick"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/d_14">
+
+                    <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/baselib_ic_back" />
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d_68"
+                        android:layout_marginRight="@dimen/d_68"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:lines="1"
+                        tools:text="杭州美人计摄影"
+                        android:textColor="#0d0d0d"
+                        android:textSize="@dimen/s_16"
+                        android:transitionName="@string/transition_title_name" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+            <RadioGroup
+                    android:id="@+id/rg_commit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                <RadioButton
+                        android:id="@+id/rb_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/sharemall_selector_radius_17dp_gradient_3e4042_1d1e1f"
+                        android:button="@null"
+                        android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/sharemall_all"
+                        android:textColor="@drawable/sharemall_selector_tab_comment"
+                        android:textSize="15sp" />
+
+                <RadioButton
+                        android:id="@+id/rb_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:background="@drawable/sharemall_selector_radius_17dp_gradient_3e4042_1d1e1f"
+                        android:button="@null"
+                        android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="6dp"
+                        android:text="@string/sharemall_patterned"
+                        android:textColor="@drawable/sharemall_selector_tab_comment"
+                        android:textSize="15sp" />
+            </RadioGroup>
+
+        </LinearLayout>
+        <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

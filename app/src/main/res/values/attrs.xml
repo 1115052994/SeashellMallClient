@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundProgressView">
+        <attr name="rProgressColor" format="color"/>
+        <attr name="rPmax" format="integer"/>
+        <attr name="rPWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatingBarView">
+        <attr name="starImageSize" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starLevel" format="integer"/>
+        <attr name="starEmpty" format="reference"/>
+        <attr name="starFill" format="reference"/>
+        <attr name="starHalf" format="reference"/>
+        <attr name="padding_right" format="dimension"/>
+        <attr name="padding_left" format="dimension"/>
+        <attr name="editable" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ShadeTextView">
+        <attr name="startColor" format="color|reference" />
+        <attr name="endColor" format="color|reference" />
+        <attr name="radialRadius" format="dimension"/>
+        <attr name="shaderType" format="enum">
+            <enum name="LinearShader" value="1"/>
+            <enum name="SweepShader" value="2" />
+            <enum name="RadialShader" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="BadgeView">
+        <attr name="imageRecorce" format="reference" />
+        <attr name="textBgResource" format="reference" />
+        <attr name="badgeTextSize" format="dimension" />
+        <attr name="badgeTextColor" format="color|reference" />
+        <attr name="badgeTextStr" format="string" />
+        <attr name="imageMarginTop" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SwitchStateButton">
+        <attr name="select_bg_color" format="color|reference" />
+        <attr name="un_select_bg_color" format="color|reference" />
+        <attr name="select_indicate_color" format="color|reference" />
+        <attr name="unselect_indicate_color" format="color|reference" />
+        <attr name="select_state" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomImageText">
+        <attr name="left_image" format="boolean" />
+        <attr name="image_text_padding" format="dimension" />
+        <attr name="text_size" format="dimension" />
+        <attr name="image_resource" format="reference" />
+        <attr name="text_color" format="color|reference" />
+        <attr name="text_content" format="string|reference" />
+    </declare-styleable>
+
+    <!--我的成长值页面View的相关资源-->
+    <declare-styleable name="MineGrowthGapView">
+        <!--当前值-->
+        <attr name="current_value" format="integer" />
+        <!--距离下一等级的值-->
+        <attr name="gap_value" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TopBar">
+        <attr name="titleText" format="string" />
+        <attr name="bg" format="color" />
+    </declare-styleable>
+    <!-- 自定义星期 View -->
+    <declare-styleable name="WeekView">
+        <attr name="wv_textColor" format="color|reference"/>
+        <attr name="wv_textSize" format="dimension|reference"/>
+    </declare-styleable>
+
+    <!-- 自定义日历 View -->
+    <declare-styleable name="CalendarView">
+        <attr name="cv_textColor" format="color|reference"/>
+        <attr name="cv_selectTextColor" format="color|reference"/>
+        <attr name="cv_textSize" format="dimension|reference"/>
+        <attr name="cv_selectTextSize" format="dimension|reference"/>
+        <attr name="cv_dayBackground" format="reference"/>
+        <attr name="cv_selectDayBackground" format="reference"/>
+        <attr name="cv_dateFormatPattern" format="string|reference"/>
+        <attr name="cv_isChangeDateStatus" format="boolean|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="PathView">
+        <attr name="pathColor" format="color|reference"/>
+        <attr name="pathWidth" format="dimension|reference"/>
+        <attr name="svg" format="reference"/>
+        <attr name="fill" format="boolean"/>
+        <attr name="fillColor" format="color|reference"/>
+        <attr name="naturalColors" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="MaxHeightRecyclerView">
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+
+    <!--主题色渐变-->
+    <attr name="themeGradientMainColor" format="reference" />
+    <attr name="themeGradientMainColorEnd" format="reference" />
+
+    <!--辅色渐变-->
+    <attr name="themeGradientSecondColor" format="reference" />
+    <attr name="themeGradientSecondColorEnd" format="reference" />
+
+
+</resources>

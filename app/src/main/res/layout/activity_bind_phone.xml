@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.login.BindPhoneActivity">
+
+    <data>
+
+        <variable
+            name="textChange"
+            type="android.databinding.adapters.TextViewBindingAdapter.AfterTextChanged" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:onClick="doClick"
+                android:padding="15dp"
+                android:src="@mipmap/baselib_ic_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="34dp"
+                android:text="验证手机号"
+                android:textColor="#ff1d1e1f"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:layout_below="@+id/ll_head"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="@dimen/d_40">
+
+                <EditText
+                    android:id="@+id/et_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{textChange}"
+                    android:background="@null"
+                    android:drawablePadding="@dimen/d_10"
+                    android:hint="@string/basemall_input_phone_number"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:paddingTop="@dimen/d_10"
+                    android:paddingBottom="@dimen/d_10"
+                    android:textColor="#1D1E1F"
+                    android:textColorHint="#999999"
+                    android:textSize="@dimen/s_14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1"
+                    android:layout_below="@+id/et_mobile"
+                    android:layout_alignStart="@+id/et_mobile"
+                    android:layout_alignLeft="@+id/et_mobile"
+                    android:layout_alignEnd="@+id/et_mobile"
+                    android:layout_alignRight="@+id/et_mobile"
+                    android:layout_marginTop="@dimen/d_5"
+                    android:background="#d6d6d6" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/et_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/tv_get_code"
+                    android:afterTextChanged="@{textChange}"
+                    android:background="@null"
+                    android:drawablePadding="@dimen/d_10"
+                    android:hint="@string/sharemall_please_input_code"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingTop="@dimen/d_10"
+                    android:paddingBottom="@dimen/d_10"
+                    android:textColor="#1D1E1F"
+                    android:textColorHint="#999999"
+                    android:textSize="@dimen/s_15" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:ems="5"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingVertical="6dp"
+                    android:text="@string/sharemall_get_verification_code"
+                    android:textColor="@drawable/sharemall_selector_coloref574c_color999"
+                    android:textSize="15sp" />
+
+                <View
+                    android:id="@+id/divide"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_1"
+                    android:layout_below="@+id/et_code"
+                    android:layout_marginTop="@dimen/d_5"
+                    android:background="#d6d6d6" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_45"
+                android:layout_marginHorizontal="@dimen/d_50"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/basemall_radius_6dp_ef574c"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/basemall_login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s_14" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

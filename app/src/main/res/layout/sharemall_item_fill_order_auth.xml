@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.user.IdCardEntity" />
+
+        <variable
+            name="order"
+            type="com.liemi.seashellmallclient.data.entity.order.OrderDetailedEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:visibility="@{order == null || !TextUtils.isEmpty(order.card_no) ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:padding="16dp"
+            android:text="@string/sharemall_fill_order_auth_tips"
+            android:textColor="#ff494949"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/sharemall_name"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/sharemall_please_input_name_same_receive"
+                android:maxLines="10"
+                android:padding="16dp"
+                android:text="@{item.card_name}"
+                android:textColor="@color/black_1d1e1f"
+                android:textColorHint="#ffc0c0c0"
+                android:textSize="14sp"
+                android:visibility="@{order == null ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="16dp"
+                android:text="@{order.card_name}"
+                android:textColor="#ff999999"
+                android:textSize="14sp"
+                android:visibility="@{order == null ? View.GONE : View.VISIBLE}"
+                tools:text="陈**" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/sharemall_id_card"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_id_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0123456789XxYy"
+                android:hint="@string/sharemall_please_id_card"
+                android:maxLength="20"
+                android:padding="16dp"
+                android:text="@{item.card_no}"
+                android:textColorHint="#ffc0c0c0"
+                android:textSize="14sp"
+                android:visibility="@{order == null ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="16dp"
+                android:text="@{order.card_no}"
+                android:textColor="#ff999999"
+                android:textSize="14sp"
+                android:visibility="@{order == null ? View.GONE : View.VISIBLE}"
+                tools:text="339005********7146" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

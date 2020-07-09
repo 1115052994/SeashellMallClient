@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.locallife.LocalLifeShopEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="20dp"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="260dp"
+                android:textStyle="bold"
+                android:text="@{item.name}"
+                android:textColor="#393939"
+                android:textSize="16sp"
+                tools:text="杭州美人计摄影" />
+            <com.liemi.seashellmallclient.widget.RatingBarView
+                android:id="@+id/rb_star_server"
+                android:layout_width="0dp"
+                android:layout_weight="2.2"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"
+                app:editable="false"
+                app:starCount="@{item.startCount}"
+                app:padding_left="5dp"
+                app:starFill="@mipmap/sharemall_light_star"
+                app:starImageSize="12dp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/tv_score"
+                android:layout_gravity="center"
+                android:text="@{@string/local_life_shop_score(item.star)}"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="20dp"
+                android:id="@+id/tv_time"
+                android:text="@{@string/local_life_shop_opening_hours(item.opening_hours)}"
+                android:textColor="#b3b3b3"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:text="营业时间:10:30-13:30" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/ll_phone"
+                android:paddingHorizontal="16dp"
+                android:layout_below="@id/tv_time">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="135498435135"
+                    android:id="@+id/tv_phone"
+                    android:text="@{@string/local_life_shop_phone(item.shop_remind_tel)}"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#B3B3B3"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="点击拨打"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/tv_call"
+                    android:onClick="@{doClick}"
+                    android:textSize="12sp"
+                    android:textColor="#45B2FF"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="16dp"
+                android:background="@mipmap/locallife_iv_shop_business_qualification"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="23dp"
+                android:onClick="@{doClick}"
+                android:id="@+id/iv_business_qualification"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/ic_location"
+                android:drawableLeft="@mipmap/ic_location"
+                android:drawablePadding="9dp"
+                android:maxLines="1"
+                android:maxWidth="300dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@{item.full_name}"
+                android:textColor="#999999"
+                android:textSize="12sp"
+                tools:text="北京市" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_navigate"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="12sp"
+                android:onClick="@{doClick}"
+                android:id="@+id/tv_location_navigate"
+                android:textColor="#45B2FF"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_marginTop="1dp"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/tv_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:textColor="#1D1E1F"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:text="商家简介" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{item.remark}"
+                tools:text="连续5年跻身中国民营企业500强前50位,自1986年创业以来,始终以建设温馨、和谐的家园,提升消费者的居家生活品味为己任。"
+                android:textSize="12sp"
+                android:textColor="#393939" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

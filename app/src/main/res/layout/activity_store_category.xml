@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.store.StoreCategoryActivity">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/theme_bg"
+            android:orientation="vertical">
+
+        <include layout="@layout/sharemall_include_title_bar" />
+
+        <TextView
+                android:id="@+id/tv_all_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:gravity="center_vertical"
+                android:onClick="doClick"
+                android:padding="16dp"
+                android:text="@string/sharemall_store_all_goods"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="15sp" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/xrv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

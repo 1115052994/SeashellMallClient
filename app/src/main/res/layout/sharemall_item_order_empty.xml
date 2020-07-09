@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_F6F6F7"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="@mipmap/sharemall_shop_car_empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/sharemall_no_order"
+            android:textColor="#ff999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_go_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/sharemall_radius_4dp_stroke_1d1e1f"
+            android:onClick="@{doClick}"
+            android:paddingHorizontal="38dp"
+            android:paddingVertical="10dp"
+            android:text="@string/sharemall_watch_today_sell"
+            android:textColor="#1D1E1F"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_title_like"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/sharemall_guess_you_like_it2"
+            android:textColor="#ff333333"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</layout>

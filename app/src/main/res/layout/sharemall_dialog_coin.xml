@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsDetailedEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sharemall_radius_ltrt8dp_ff"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:clickable="true"
+            android:drawableEnd="@mipmap/sharemall_ic_cancel"
+            android:drawableRight="@mipmap/sharemall_ic_cancel"
+            android:gravity="center"
+            android:paddingTop="19dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:text="@string/sharemall_select_coupon"
+            android:textColor="#1F1F1E"
+            android:textSize="16sp" />
+
+        <com.liemi.seashellmallclient.widget.MaxHeightRecyclerView
+            android:id="@+id/rv_param"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F6F6F7"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            app:maxHeight="400dp" />
+
+    </LinearLayout>
+
+</layout>

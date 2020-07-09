@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.bbs.BBsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/sharemall_include_title_bar"/>
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/st_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/ll_top"
+            android:layout_gravity="center_vertical|center"
+            android:background="@color/white"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            app:tl_indicator_color="@color/bgColor"
+            app:tl_indicator_height="3dp"
+            app:tl_indicator_width="20dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_textSelectColor="@color/sharemall_text_theme_main"
+            app:tl_textUnselectColor="#b2b2b2"
+            app:tl_textsize="14sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#F2F2F2"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.wallet.WalletRecordActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/sharemall_include_title_bar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sharemall_details_wallet_sum"
+            android:layout_margin="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/gray_33"/>
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/xrv_data"
+            android:overScrollMode="never"/>
+    </LinearLayout>
+</layout>

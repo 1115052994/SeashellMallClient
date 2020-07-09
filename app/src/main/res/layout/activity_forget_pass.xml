@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.login.ForgetPassActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_head"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="doClick"
+                android:padding="15dp"
+                android:layout_marginTop="12dp"
+                android:src="@mipmap/baselib_ic_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_reset_pwd"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="34dp"
+                android:textColor="#363636"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_head"
+            android:layout_marginTop="41dp">
+            <!--输入手机号码-->
+            <EditText
+                android:id="@+id/et_input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:hint="@string/sharemall_please_input_bind_phone"
+                android:lines="1"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"
+                android:textColor="#1d1e1f"
+                android:textColorHint="#999999"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_line_phone"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#d6d6d6"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/et_input_phone" />
+
+
+            <EditText
+                android:id="@+id/et_input_auth_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:hint="@string/sharemall_please_input_code"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="10"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"
+                android:textColor="#1d1e1f"
+                android:textColorHint="#999999"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/view_line_phone" />
+
+            <TextView
+                android:id="@+id/tv_get_auth_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="doClick"
+                android:paddingLeft="9dp"
+                android:paddingVertical="5dp"
+                android:text="@string/sharemall_get_verification_code"
+                android:textColor="@drawable/sharemall_selector_coloref574c_color999"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/et_input_auth_code"
+                app:layout_constraintHorizontal_bias="0.85"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_alignParentEnd="true" />
+
+            <View
+                android:id="@+id/view_line_code"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#d6d6d6"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/et_input_auth_code" />
+
+            <!--密码-->
+            <EditText
+                android:id="@+id/et_input_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/d_50"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:hint="@string/sharemall_please_input_new_password"
+                android:inputType="numberPassword"
+                android:lines="1"
+                android:maxLength="6"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="4dp"
+                android:textColor="#1d1e1f"
+                android:textColorHint="#999999"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/view_line_code" />
+
+            <View
+                android:id="@+id/view_line_password"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#d6d6d6"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/et_input_new_password" />
+
+            <!--确认密码-->
+            <EditText
+                android:id="@+id/et_input_new_password_again"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:hint="@string/sharemall_please_input_new_password_again"
+                android:inputType="numberPassword"
+                android:lines="1"
+                android:maxLength="6"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"
+                android:textColor="#1d1e1f"
+                android:textColorHint="#999999"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/view_line_password" />
+            <View
+                android:id="@+id/view_line_again_password"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#d6d6d6"
+                app:layout_constraintLeft_toLeftOf="@id/et_input_phone"
+                app:layout_constraintRight_toRightOf="@id/et_input_phone"
+                app:layout_constraintTop_toBottomOf="@id/et_input_new_password_again" />
+
+
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/basemall_radius_6dp_ef574c"
+                android:enabled="true"
+                android:onClick="doClick"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="@string/sharemall_reset_pwd"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="@dimen/d_50"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_input_new_password_again" />
+        </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
+</layout>

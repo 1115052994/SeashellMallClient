@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EF574C</color>
+    <color name="colorPrimaryDark">#EF574C</color>
+    <color name="colorAccent">#EF574C</color>
+
+    <color name="bgColor">#EF574C</color>
+    <color name="color_0dff9241">#0dFF9241</color>
+    <!--字的主色调-->
+    <color name="sharemall_text_theme_main">#1d1e1f</color>
+
+    <!--tabLayout的选中颜色-->
+    <color name="sharemall_text_top_tab_selector">#ffffff</color>
+    <color name="sharemall_text_top_tab_un_selector">#80ffffff</color>
+
+    <color name="gray_EE">#EEEEEE</color>
+    <color name="gray_55">#555555</color>
+    <color name="gray_33">#333333</color>
+    <color name="gray_66">#666666</color>
+    <color name="gray_99">#999999</color>
+    <color name="gray_69">#696969</color>
+    <color name="gray_F6F6F7">#F6F6F7</color>
+    <color name="gray_A9">#A9A9A9</color>
+    <color name="gray_B3">#B3B3B3</color>
+    <color name="gray_F9">#F9F9F9</color>
+    <color name="gray_F5">#F5F5F5</color>
+    <color name="gray_F7">#F7F7F7</color>
+    <color name="gray_F8">#F8F8F8</color>
+    <color name="gray_BB">#BBBBBB</color>
+    <color name="gray_CC">#CCCCCC</color>
+    <color name="gray_4b545c">#4b545c</color>
+    <color name="gray_1B252D">#1B252D</color>
+    <color name="color_B52902">#B52902</color>
+    <color name="color_9A9A9A">#9A9A9A</color>
+    <color name="color_D81E06">#D81E06</color>
+    <color name="color_657785">#657785</color>
+    <color name="color_562A24">#562A24</color>
+    <color name="color_ef574c">#ef574c</color>
+
+    <color name="black_3e4042">#3E4042</color>
+    <color name="black_1d1e1f">#1d1e1f</color>
+    <color name="black_1f1f1f">#1f1f1f</color>
+    <color name="black_18293a">#18293a</color>
+    <color name="black_36">#363636</color>
+    <color name="black_39">#393939</color>
+
+
+    <color name="color_transparent">#00000000</color>
+
+    <color name="sharemall_green_1eb090">#1EB090</color>
+
+    <!--商品详情页：加入购物车、赚n-->
+    <color name="sharemall_goods_add_shopcart">#2E2F30</color>
+    <color name="sharemall_goods_earn">#D6BF9E</color>
+</resources>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.setting.SettingActivity">
+
+    <data>
+
+        <variable
+            name="userInfo"
+            type="com.liemi.seashellmallclient.data.entity.user.ShareMallUserInfoEntity" />
+
+        <variable
+            name="cacheNum"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2">
+        <!--顶部-->
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/sharemall_include_title_bar" />
+        <!--中间功能区域-->
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_title"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_F2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_sevice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:onClick="doClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="16dp"
+                android:text="@string/basemall_terms_of_service1"
+                android:textColor="@color/gray_4b545c"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_privatel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:onClick="doClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="16dp"
+                android:text="@string/basemall_agreement_of_private1"
+                android:textColor="@color/gray_4b545c"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!--意见反馈-->
+            <TextView
+                android:id="@+id/tv_suggestion_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:onClick="doClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="16dp"
+                android:text="@string/sharemall_suggestion_feedback"
+                android:textColor="@color/gray_4b545c"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+            <!--版本更新-->
+            <LinearLayout
+                android:id="@+id/ll_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:onClick="doClick"
+                android:paddingLeft="20dp"
+                android:paddingRight="21dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/sharemall_version_update"
+                    android:textColor="@color/gray_4b545c"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_version_tips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/sharemall_radius_12dp_gradient_d72b18_d71857"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/sharemall_version_new"
+                    android:textColor="#ffffffff"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                    android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                    android:drawablePadding="11dp"
+                    android:textColor="@color/gray_A9"
+                    android:textSize="14sp"
+                    tools:text="V 1.0.2" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:onClick="doClick"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="16dp"
+                android:text="@string/sharemall_about_us"
+                android:textColor="@color/gray_4b545c"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/ll_clear_cache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingRight="21dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sharemall_clear_cache"
+                    android:textColor="@color/gray_4b545c"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/normalTextView"
+                    android:text="@{cacheNum}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="525M" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--底部-->
+        <TextView
+            android:id="@+id/tv_exit_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/basemall_radius_10dp_gradient_ef574c"
+            android:gravity="center"
+            android:maxLines="1"
+            android:onClick="doClick"
+            android:paddingTop="14dp"
+            android:paddingBottom="15dp"
+            android:text="@string/sharemall_exit_login"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/tv_fu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/basemall_terms_of_service1"
+                android:textColor="@color/bgColor" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/bgColor" />
+
+            <TextView
+                android:id="@+id/tv_yin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/basemall_agreement_of_private1"
+                android:textColor="@color/bgColor" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</layout>

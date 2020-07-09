@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:id="@+id/ll_delete"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b3000000"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_22dp_gradient_ff9241"
+            android:drawableStart="@mipmap/sharemall_ic_delete"
+            android:drawableLeft="@mipmap/sharemall_ic_delete"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="11dp"
+            android:text="@string/sharemall_delete"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+</layout>

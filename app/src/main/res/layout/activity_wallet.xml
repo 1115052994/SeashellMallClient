@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.wallet.WalletActivity">
+
+    <data>
+
+        <variable
+            name="hai"
+            type="String" />
+
+        <variable
+            name="money"
+            type="String" />
+
+        <variable
+            name="wait"
+            type="String" />
+
+        <variable
+            name="waitMoney"
+            type="String" />
+
+        <variable
+            name="earn"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/ll_title"
+            layout="@layout/sharemall_include_title_bar" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_title"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_hai_wallet"
+                android:textColor="#6e6e6e"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/sharemall_ic_order_more"
+                android:drawablePadding="10dp"
+                android:onClick="doClick"
+                android:text="@string/sharemall_details_wallet"
+                android:textColor="#6e6e6e"
+                android:textSize="12sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_hai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{hai}"
+                android:textColor="@color/bgColor"
+                android:textSize="28sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv"
+                tools:text="12850" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/sharemall_earnings_money(money)}"
+                android:textColor="@color/bgColor"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_hai"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_hai"
+                tools:text="≈20000" />
+
+            <TextView
+                android:id="@+id/tv_wait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{@string/sharemall_vip_order_not_finish1(wait)}"
+                android:textColor="#6e6e6e"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_hai"
+                tools:text="100000" />
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@{waitMoney}"-->
+            <!--                android:textColor="#6e6e6e"-->
+            <!--                android:textSize="12sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/tv_wait"-->
+            <!--                app:layout_constraintRight_toRightOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@id/tv_wait"-->
+            <!--                tools:text="≈20000" />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{earn}"
+                android:textColor="#6e6e6e"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_wait"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_wait"
+                tools:text="预估收益：20000" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cl_top"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sharemall_transfer"
+                android:textColor="#4B545C"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:textColor="#ff999999"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_receipt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_transfer"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sharemall_receipt"
+                android:textColor="#4B545C"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:textColor="#ff999999"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_top_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_toLeftOf="@id/view"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="充值海贝"
+                android:textColor="#4B545C"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/ll_top_up"
+            android:layout_alignBottom="@id/ll_top_up"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="15dp"
+            android:background="#979797" />
+
+        <LinearLayout
+            android:id="@+id/ll_extract"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="30dp"
+            android:layout_toRightOf="@id/view"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="提取海贝"
+                android:textColor="#4B545C"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.floor.NewFloorEntity.FloorDataBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp">
+
+        <ImageView
+            civPath="@{item.img_url}"
+            android:src="@drawable/baselib_bg_default_pic"
+            android:id="@+id/iv_floor"
+            android:layout_width="42dp"
+            android:layout_height="42dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@{item.title}"
+            android:textColor="@color/gray_99"
+            android:textSize="12sp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            tools:text="全部分类"/>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.vip.VIPIncomeOrderEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenLabel"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{doClick}"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/theme_bg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/basemall_radius_4dp_ef574c"
+                android:padding="2dp"
+                android:text="@string/sharemall_sell"
+                android:textColor="#ffffffff"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="@{hiddenLabel ? View.GONE : View.VISIBLE}"
+                tools:text="@string/sharemall_sell"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="22dp"
+                android:text="@{item.create_time}"
+                android:textColor="#ff999999"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{item.statusFormat}"
+                android:textColor="@color/bgColor"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/theme_bg" />
+
+        <com.liemi.seashellmallclient.widget.MyRecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{doClick}"
+            android:visibility="visible" />
+
+        <include
+            layout="@layout/sharemall_item_vip_income_good"
+            bind:item="@{item}"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="end|center_vertical"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/sharemall_vip_order_total_income(item.total_num)}"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp"
+                tools:text="共计 1 件商品  总计：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.formatMoney(item.total_price)}"
+                android:textColor="@color/bgColor"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="¥35" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

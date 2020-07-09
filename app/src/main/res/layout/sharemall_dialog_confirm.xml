@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="278dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/baselib_bg_white_radius_5"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#1D1E1F"
+            android:textSize="16sp"
+            android:text="@string/sharemall_invoice_notice" />
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@mipmap/sharemall_ic_cancel" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#eee" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:maxLines="20"
+        android:minLines="8"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="10dp"
+        android:textColor="#666666"
+        android:textSize="15sp"
+        tools:text="清远以山地丘陵为主，大龙山、瑶山、云开大山与北江、连江、滃江、潖江在这里交汇，从而孕育出雄奇险陵的高山峡谷，松涛如海的原始森林、纯如深闺的湖泊温泉，以及豪放古朴的瑶、壮民族风情。" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#eee" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="14dp"
+        android:text="@string/sharemall_i_know"
+        android:textColor="@color/bgColor"
+        android:textSize="16sp" />
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_brown"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/sharemall_ic_seckill_title"
+                android:drawablePadding="4dp"
+                android:paddingVertical="15dp"
+                android:textColor="#ff1d1e1f"
+                android:textSize="18sp"
+                tools:text="@string/sharemall_groupon_area" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_EE" />
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/stl_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            app:tl_divider_color="#eeeeee"
+            app:tl_divider_padding="15dp"
+            app:tl_divider_width="1dp"
+            app:tl_indicator_color="@color/bgColor"
+            app:tl_indicator_corner_radius="4dp"
+            app:tl_indicator_margin_left="12dp"
+            app:tl_indicator_margin_right="12dp"
+            app:tl_indicator_style="BLOCK"
+            app:tl_textSelectColor="@color/white"
+            app:tl_textUnselectColor="#b2b2b2"
+            app:tl_textsize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_EE" />
+
+
+    </LinearLayout>
+</layout>

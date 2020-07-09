@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenFooter"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.RefundListEntity" />
+
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@mipmap/sharemall_ic_right_gray"
+            android:onClick="@{doClick}"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:text="@{item.refund.shop.name}"
+            android:textColor="@color/black_39"
+            android:textSize="14sp"
+            tools:text="Nike官方直营店" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="16dp">
+
+
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:id="@+id/iv_image"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baselib_bg_default_pic"
+                bind:ivPathN="@{item.item_img}" />
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_image"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{item.spu_name}"
+                android:textColor="#ff393939"
+                android:textSize="12sp"
+                tools:text="2019新款Apple/苹果 MacBook Pro MLH42CH/A国行笔记本15寸" />
+
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_image"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="2dp"
+                android:text="@{TextUtils.isEmpty(item.num) ? @string/sharemall_x1 : @string/sharemall_format_x_num(item.num)}"
+                android:textColor="#ff393939"
+                android:textSize="12sp"
+                tools:text="x1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/tv_num"
+                android:layout_below="@id/tv_goods_name"
+                android:layout_toRightOf="@id/iv_image"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="@{@string/sharemall_format_goods_specs_tip(item.value_name)}"
+                android:textColor="#ffb3b3b3"
+                android:textSize="@dimen/s_10"
+                tools:text="规格:42mm+蜂窝移动版" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/basemall_radius_4dp_ef574c"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="1dp"
+                android:text="@{item.refund.type == 1 ? @string/sharemall_vip_refund : @string/sharemall_refund_type_money_good}"
+                android:textColor="#ffffffff"
+                android:textSize="8sp"
+                tools:text="退货退款" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.refund.status_name}"
+                android:textColor="#ff393939"
+                android:textSize="12sp"
+                tools:text="商家拒绝退款" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="，"
+                android:textColor="#ff393939"
+                android:textSize="12sp"
+                android:visibility="@{item.refund.second == 0 ? View.GONE : View.VISIBLE}" />
+
+            <cn.iwgang.countdownview.CountdownView
+                android:id="@+id/cv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="2dp"
+                android:visibility="@{item.refund.second == 0 ? View.GONE : View.VISIBLE}"
+                bind:isHideTimeBackground="true"
+                bind:isShowMinute="true"
+                bind:isShowSecond="false"
+                bind:suffixDay="@string/sharemall_day"
+                bind:suffixHour="@string/sharemall_hours"
+                bind:suffixMinute="@string/sharemall_minutes"
+                bind:suffixTextColor="@color/black_39"
+                bind:suffixTextSize="12sp"
+                bind:timeTextColor="@color/black_39"
+                bind:timeTextSize="12sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{item.leftTimeText()}"
+                android:textColor="#ff393939"
+                android:textSize="12sp"
+                tools:text="内可重新申请" />
+
+            <TextView
+                android:id="@+id/tv_contact_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/basemall_radius_17dp_ef574c"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:text="@string/sharemall_custom_service"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                tools:text="客服" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

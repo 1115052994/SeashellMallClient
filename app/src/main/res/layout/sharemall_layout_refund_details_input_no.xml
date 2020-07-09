@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--退款详情  填写物流单号-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/input_no_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sharemall_refund_details_input_no_info"
+            android:textColor="@color/black_1d1e1f"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--取消申请-->
+        <TextView
+            android:id="@+id/tv_refund_details_input_no_cancel_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/sharemall_radius_15dp_stroke_1dp_999"
+            android:onClick="doClick"
+            android:paddingLeft="14dp"
+            android:paddingTop="6dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="5dp"
+            android:text="@string/sharemall_refund_details_cancel_apply"
+            android:textColor="@color/gray_55"
+            android:textSize="14sp"
+            app:layout_constraintRight_toLeftOf="@id/tv_refund_details_input_no"
+            app:layout_constraintTop_toBottomOf="@id/input_no_info" />
+        <!--填写物流-->
+        <TextView
+            android:id="@+id/tv_refund_details_input_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/sharemall_radius_15dp_gradient_ef574c"
+            android:onClick="doClick"
+            android:paddingLeft="14dp"
+            android:paddingTop="6dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="5dp"
+            android:text="@string/sharemall_refund_details_input_no"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_no_info" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

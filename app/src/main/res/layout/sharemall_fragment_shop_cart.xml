@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F6F6F7"
+        android:focusableInTouchMode="true">
+
+        <RelativeLayout
+            android:id="@+id/include_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:paddingVertical="12dp"
+                android:text="@string/sharemall_my_shop_cart"
+                android:textColor="@color/black_36"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:transitionName="@string/transition_title_name" />
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="12dp"
+                android:text="@string/sharemall_manager"
+                android:textColor="@color/black_36"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:src="@mipmap/sharemall_icon_back_gray"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/ll_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/sharemall_icon_mine_coupon_select" />
+
+                <TextView
+                    android:id="@+id/tv_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:button="@null"
+                    android:focusable="false"
+                    android:text="@string/sharemall_all_select"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_total"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/sharemall_total"
+                    android:textColor="#555555"
+                    android:textSize="12sp" />
+
+                <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                    android:id="@+id/tv_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:textColor="@color/bgColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="¥0.00" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sharemall_gradient_ef574c"
+                android:ems="6"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/sharemall_to_create_order"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_footer"
+            android:layout_below="@id/include_title"
+            android:overScrollMode="never" />
+
+        <View
+            android:id="@+id/v_footer_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_above="@id/ll_footer"
+            android:background="@color/divider_color" />
+    </RelativeLayout>
+</layout>

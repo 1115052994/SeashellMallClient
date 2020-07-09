@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.OrderSkusEntity" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.liemi.seashellmallclient.data.param.OrderParam" />
+
+        <!--显示售后服务， 默认不显示-->
+        <variable
+            name="afterSale"
+            type="Boolean" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="@{position == 0 ? @dimen/d_16 : @dimen/dp_0}"
+        android:paddingBottom="16dp">
+
+        <FrameLayout
+            android:id="@+id/fl_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!--商品图片-->
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baselib_bg_default_pic"
+                bind:ivPathN="@{item.img_url}" />
+
+        </FrameLayout>
+
+        <com.liemi.seashellmallclient.widget.GoodsTitleNormalTextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/fl_image"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/fl_image"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.spu_name}"
+            android:textColor="#1D1E1F"
+            android:textSize="14sp"
+            tools:text="商品名称商品名称商品名称" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/fl_image"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{item.formatMoney(item.sku_price)}"
+            android:textColor="@color/black_36"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="￥1500" />
+
+        <TextView
+            android:id="@+id/tv_good_specification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_price"
+            android:layout_below="@id/tv_name"
+            android:layout_alignLeft="@id/tv_name"
+            android:layout_toLeftOf="@id/tv_apply_after_sales"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:lines="1"
+            android:text="@{item.value_names}"
+            android:textColor="@color/gray_99"
+            android:visibility="visible"
+            android:textSize="12sp"
+            tools:text="100克" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_price"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="2dp"
+            android:text="@{@string/sharemall_format_x_num(item.num)}"
+            android:textColor="@color/black_39"
+            android:textSize="10sp"
+            tools:text="X1" />
+
+
+        <!--申请售后,待付款和待发货会显示这个按钮-->
+        <TextView
+            android:id="@+id/tv_apply_after_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/sharemall_radius_15dp_stroke_1dp_999"
+            android:onClick="@{doClick}"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="3dp"
+            android:text="@{item.status == OrderParam.ORDER_WAIT_SEND || item.status == OrderParam.ORDER_WAIT_RECEIVE ? (item.status == OrderParam.ORDER_WAIT_SEND ? @string/sharemall_refund_type_money : @string/sharemall_refund_type_money_good) : item.statusFormat}"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:visibility="gone"
+            tools:text="申请售后" />
+
+    </RelativeLayout>
+</layout>

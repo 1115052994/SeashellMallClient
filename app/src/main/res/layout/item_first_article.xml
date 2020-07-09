@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.article.ArticleListEntity"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.netmi.baselibrary.widget.RoundImageView
+            android:layout_marginTop="16dp"
+            ivPathN="@{item.img_url}"
+            android:layout_width="343dp"
+            android:scaleType="fitXY"
+            android:layout_height="196dp"
+            app:layout_constraintDimensionRatio="h,3:2"
+            android:id="@+id/iv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <TextView
+            android:text="@{item.title}"
+            android:singleLine="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="中共国务院党组召开会议 深入学习全面领会…"
+            android:textColor="#ff1f1f1f"
+            android:id="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/iv"
+            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/ll"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/format_read_num(item.read_num)}"
+                android:textColor="#ff9c9c9c"
+                android:textSize="12sp" />
+            <TextView
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="34 赞"
+                android:text="@{@string/format_comment_num(item.comment_num)}"
+                android:textColor="#ff9c9c9c"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <View
+            android:layout_marginTop="16dp"
+            android:background="@color/theme_bg"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/ll"
+            android:layout_height="1dp"/>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

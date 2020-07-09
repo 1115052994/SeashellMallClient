@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.vip.VIPIncomeListEntity" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="17dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            android:textSize="16sp"
+            android:id="@+id/tv_text1"
+            android:textColor="@color/gray_33"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/gray_33"
+            android:textSize="20sp"
+            android:text="@{item.price}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.create_time}"
+                android:layout_marginTop="5dp"
+                tools:text="2019-10-11"
+                android:layout_below="@id/tv_text1"
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:id="@+id/tv_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_66"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/tv_text1"
+                android:layout_alignParentRight="true"
+                android:text="@{item.auditName()}"
+                tools:text="审核中"/>
+    </RelativeLayout>
+</layout>

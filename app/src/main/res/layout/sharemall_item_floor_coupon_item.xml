@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/sharemall_radius_4dp_stroke_1dp_ff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <TextView
+                android:id="@+id/tv_coupon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                tools:text="满5减1" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mine.order.MineOrderDetailsActivity">
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <import type="com.liemi.seashellmallclient.data.param.OrderParam" />
+        <import type="android.text.TextUtils"/>
+
+        <variable
+                name="item"
+                type="com.liemi.seashellmallclient.data.entity.order.OrderDetailedEntity" />
+
+
+        <!--物流信息，待收货，待评价，已完成状态下需要-->
+        <variable
+                name="logisticsInfo"
+                type="String" />
+    </data>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_F6F6F7">
+        <!--title-->
+        <include
+                android:id="@+id/layout_title"
+                layout="@layout/sharemall_include_title_bar" />
+
+        <!--中间显示订单信息-->
+        <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_bottom"
+                android:layout_below="@+id/layout_title"
+                android:layout_centerInParent="true"
+                android:fillViewport="true">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="30dp">
+                <!--订单状态-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp">
+
+                    <ImageView
+                            ivPathResource="@{item.getStatusImage}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:text="@{item.statusFormat}"
+                            android:textColor="@color/black_18293a"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="等待付款" />
+
+                </LinearLayout>
+                <!--配送地址-->
+                <include
+                        layout="@layout/sharemall_layout_mine_order_details_address"
+                        bind:address="@{item.getAddressEntity}" />
+                <!--物流信息-->
+                <ViewStub
+                        android:id="@+id/vs_logistics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout="@layout/sharemall_layout_mine_order_details_logistics" />
+
+                <!--订单列表-->
+                <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"/>
+
+                <!--发票信息-->
+                <include
+                        layout="@layout/sharemall_layout_mine_order_details_invoice"
+                        bind:orderInvoiceEntity="@{item.orderInvoice}" />
+
+                <!--跨境购-->
+                <include
+                        layout="@layout/sharemall_item_fill_order_auth"
+                        bind:order="@{item}" />
+
+                <!--运费信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_carriage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sharemall_order_carriage"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:text="@{Strings.toDouble(item.order_logistics_freight) > 0 ? item.formatMoney(item.order_logistics_freight) : @string/sharemall_free_shipping}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="14sp"
+                        tools:text="包邮" />
+
+                </LinearLayout>
+
+                <!--优惠券-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="@{Strings.toDouble(item.order_coupon_amount) > 0 ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:id="@+id/tv_coupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/person_my_coupon"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:text="@{@string/sharemall_discount_price(item.formatMoney(item.order_coupon_amount))}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="14sp"
+                        tools:text="-¥10" />
+
+                </LinearLayout>
+
+                <!--实付款-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_total_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_title_real_price"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="14sp"
+                        tools:text="@string/sharemall_title_real_price" />
+
+                    <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                        android:id="@+id/tv_good_sum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.formatMoney(item.order_amount)}"
+                        android:textColor="@color/bgColor"
+                        android:textSize="18sp"
+                        tools:text="¥35" />
+
+                </LinearLayout>
+
+                <!--支付海贝-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:visibility="@{TextUtils.equals(item.pay_channel,@string/sharemall_three)?View.VISIBLE:View.GONE}"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_total_hai"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_title_real_hai"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="14sp"
+                        tools:text="@string/sharemall_title_real_hai" />
+
+                    <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                        android:id="@+id/tv_good_hai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.pay_hai}"
+                        android:textColor="@color/bgColor"
+                        android:textSize="18sp"
+                        tools:text="3500" />
+
+                </LinearLayout>
+
+                <!--订单编号，待付款状态下没有-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{item.status == OrderParam.ORDER_WAIT_PAY ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_order_no"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end|center_vertical"
+                            android:lines="1"
+                            android:text="@{item.order_no}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+                <!--下单时间-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.create_time) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_buy_time"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.create_time}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+                <!--付款时间-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.pay_time) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_pay_time"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.pay_time}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+                <!--发货时间-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.deliver_time) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_deliver_time"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.deliver_time}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+                <!--成交时间-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.finish_time) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_order_success_time"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.finish_time}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+
+                <!--关闭时间-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.close_time) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_order_close_time"
+                            android:textColor="@color/black_1d1e1f"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.close_time}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="123213213213213" />
+                </LinearLayout>
+
+                <!--支付方式-->
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:visibility="@{Strings.isEmpty(item.pay_channel) ? View.GONE : View.VISIBLE}">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sharemall_pay_type"
+                            android:textColor="@color/gray_33"
+                            android:textSize="14sp" />
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:text="@{item.formatPayChannel}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="14sp"
+                            tools:text="支付宝支付" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <!--底部的操作按钮-->
+        <LinearLayout
+                android:id="@+id/ll_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:gravity="end|center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp">
+
+            <TextView
+                    android:id="@+id/tv_contact_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="5dp"
+                    android:text="@string/sharemall_contact_custom_service"
+                    android:textColor="#ff363636"
+                    android:textSize="14sp"
+                    android:visibility="@{item.status == OrderParam.ORDER_WAIT_PAY ? View.GONE : View.VISIBLE}" />
+
+            <!--支付金额-->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:text="@string/sharemall_order_details_pay_amount"
+                    android:textColor="@color/gray_55"
+                    android:textSize="12sp"
+                    android:visibility="@{item.status == OrderParam.ORDER_WAIT_PAY ? View.VISIBLE : View.GONE}"
+                    tools:text="需支付：" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:text="@{FloatUtils.formatMoney(item.order_amount)}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="@{item.status == OrderParam.ORDER_WAIT_PAY ? View.VISIBLE : View.GONE}"
+                    tools:text="¥12" />
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            <TextView
+                    android:id="@+id/tv_order_function1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/sharemall_radius_15dp_stroke_1dp_999"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.leftButtonStr}"
+                    android:textColor="@color/gray_55"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.leftButtonStr) ? View.GONE : View.VISIBLE}"
+                    tools:text="取消订单" />
+
+            <TextView
+                    android:id="@+id/tv_order_function2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/sharemall_radius_15dp_gradient_ef574c"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.rightButtonStr}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.rightButtonStr) ? View.GONE : View.VISIBLE}"
+                    tools:text="立即付款" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

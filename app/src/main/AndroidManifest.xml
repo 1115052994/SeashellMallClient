@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.liemi.seashellmallclient">
+    <!-- 权限声明 -->
+    <!-- 访问网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.liemi.pjworker 替换为自己的包名 -->
+    <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
+    <permission
+        android:name="com.liemi.seashellmallclient.permission.RECEIVE_MSG"
+        android:protectionLevel="signature" /> <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.liemi.pjworker 替换为自己的包名 -->
+    <uses-permission android:name="com.liemi.pjworker.permission.RECEIVE_MSG" /> <!-- 定位相关 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 银联支付 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature android:name="android.hardware.nfc.hce" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 这个权限用于允许程序在手机屏幕关闭后后台进程仍然运行 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="getui.permission.GetuiService.${applicationId}" />
+
+    <permission
+        android:name="getui.permission.GetuiService.${applicationId}"
+        android:protectionLevel="normal" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.login.BindInviteCodeActivity"></activity>
+        <activity android:name=".ui.mine.order.MineOfflineOrderDetailsActivity" />
+        <activity
+            android:name=".ui.mine.MerchantsSettledActivity"
+            android:hardwareAccelerated="false" /> <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="${GETUI_APP_ID}" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="${GETUI_APP_KEY}" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="${GETUI_APP_SECRET}" />
+
+        <service
+            android:name=".service.AppPushService"
+            android:exported="false"
+            android:label="PushService"
+            android:process=":pushservice" /> <!-- 用户自定义服务继承自GTIntentService,作为SDK与APP桥梁服务,用来接收各种消息和命令回复 -->
+        <service
+            android:name=".service.XyPushIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 个推 配置 SDK 核心服务 -->
+        <!-- permission 属性在 2.13.1.0 版本后必须配置 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="false"
+            android:label="NotificationCenter"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":pushservice" />
+
+        <receiver android:name="com.igexin.sdk.PushReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 以下三项为可选的 action 声明，有助于提高 service 存活率 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.igexin.sdk.GActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 个推 SDK 配置结束 -->
+        <activity android:name=".ui.login.BindPhoneActivity" />
+        <activity android:name=".ui.GuidePageActivity" />
+        <activity
+            android:name=".ui.mine.HaiBeiConfidenceActivity"
+            android:hardwareAccelerated="false" />
+        <activity android:name=".ui.mine.vip.VIPFollowerLowerActivity" />
+        <activity android:name=".ui.mine.wallet.CaptureQRCodeActivity" />
+        <activity android:name=".ui.mine.wallet.WalletTransferActivity" />
+        <activity android:name=".ui.mine.wallet.WalletRechargeActivity" />
+        <activity android:name=".ui.mine.wallet.WalletExtractResultActivity" />
+        <activity android:name=".ui.mine.wallet.WalletExtractActivity" />
+        <activity android:name=".ui.mine.wallet.WalletRecordActivity" />
+        <activity android:name=".ui.mine.MyCollectionActivity" />
+        <activity android:name=".ui.mine.wallet.WalletActivity" />
+        <activity android:name=".ui.mine.vip.PerformanceManagementDetailActivity" />
+        <activity android:name=".ui.mine.vip.PerformanceManagementActivity" />
+        <activity android:name=".ui.mine.message.MessageActivity" />
+        <activity android:name=".ui.mine.message.NoticeMsgActivity" />
+        <activity android:name=".ui.mine.refund.RefundListActivity" />
+        <activity android:name=".ui.mine.vip.VIPFollowerActivity" />
+        <activity android:name=".ui.mine.vip.VIPShareActivity" />
+        <activity android:name=".ui.mine.bbs.MyCommentActivity" />
+        <activity android:name=".ui.mine.bbs.ArticleWebActivity" />
+        <activity android:name=".ui.mine.bbs.BBsActivity" />
+        <activity android:name=".ui.mine.userinfo.ChangePhoneActivity" />
+        <activity android:name=".ui.mine.verification.VerificationMinOrderPaySuccessActivity" />
+        <activity android:name=".ui.mine.verification.VerificationQRCodeActivity" />
+        <activity android:name=".ui.mine.verification.VerificationMineOrderDetailsActivity" />
+        <activity android:name=".ui.mine.verification.VerificationMineCommentActivity" />
+        <activity android:name=".ui.mine.verification.MyVerificationActivity" />
+        <activity android:name=".ui.locallife.LocalLifeShopPayActivity" />
+        <activity android:name=".ui.video.VideoPlayerActivity" />
+        <activity android:name=".ui.video.VideoPlayer2Activity" />
+        <activity android:name=".ui.locallife.LocalLifeShopCommentAllActivity" />
+        <activity android:name=".ui.locallife.LocalLifeGoodsAllActivity" />
+        <activity android:name=".ui.locallife.LocalLifeGoodsDetailActivity" />
+        <activity android:name=".ui.mine.verification.VerificationOrderPayOnlineActivity" />
+        <activity android:name=".ui.locallife.LocalLifeSubmitOrderActivity" />
+        <activity android:name=".ui.locallife.LocalLifeShopDetailActivity" />
+        <activity android:name=".ui.mine.refund.OrderRefundActivity" />
+        <activity android:name=".ui.mine.refund.RefundApplyLogisticActivity" />
+        <activity android:name=".ui.mine.refund.RefundDetailedActivity" />
+        <activity android:name=".ui.mine.refund.RefundApplySuccessActivity" />
+        <activity android:name=".ui.mine.refund.ApplyForRefundActivity" />
+        <activity android:name=".ui.mine.refund.ApplyRefundTypeActivity" />
+        <activity android:name=".ui.mine.order.MineCommentActivity" />
+        <activity android:name=".ui.mine.order.LogisticTrackActivity" />
+        <activity android:name=".ui.vip.VipTaskActivity" />
+        <activity android:name=".ui.mine.order.MineOrderActivity" />
+        <activity android:name=".ui.mine.order.MineOrderDetailsActivity" />
+        <activity android:name=".ui.good.order.PayResultActivity" />
+        <activity android:name=".ui.good.order.PayErrorActivity" />
+        <activity android:name=".ui.good.order.OrderPayOnlineActivity" />
+        <activity android:name=".ui.good.order.InvoiceActivity" />
+        <activity android:name=".ui.shopcart.ShopCartActivity" />
+        <activity android:name=".ui.store.StoreSearchActivity" />
+        <activity android:name=".ui.store.StoreCategoryActivity" />
+        <activity android:name=".ui.store.StoreDetailActivity" />
+        <activity android:name=".ui.good.order.FillOrderActivity" />
+        <activity android:name=".ui.vip.VipUpgradeActivity" />
+        <activity android:name=".ui.vip.VIPGiftDetailActivity" />
+        <activity android:name=".ui.good.GoodDetailPageActivity" />
+        <activity android:name=".ui.category.CategoryGoodsActivity" />
+        <activity android:name=".ui.category.CategoryActivity" />
+        <activity android:name=".ui.mine.coupon.CouponCenterActivity" />
+        <activity android:name=".ui.login.ForgetPwdActivity" />
+        <activity android:name=".ui.login.UpdatePwdActivity" />
+        <activity android:name=".ui.login.PayPwdActivity" />
+        <activity android:name=".ui.login.LoginPwdActivity" />
+        <activity android:name=".ui.mine.userinfo.AccountSafeActivity" />
+        <activity android:name=".ui.mine.address.AddressAddActivity" />
+        <activity android:name=".ui.mine.address.AddressManageActivity" />
+        <activity android:name=".ui.mine.userinfo.ChangePhoneAuthActivity" />
+        <activity android:name=".ui.mine.userinfo.ChangeNickNameActivity" />
+        <activity android:name=".ui.mine.setting.SuggestionFeedbackActivity" />
+        <activity android:name=".ui.mine.coupon.MineCouponActivity" />
+        <activity android:name=".ui.mine.userinfo.UserInfoActivity" />
+        <activity android:name=".ui.mine.setting.SettingActivity" />
+        <activity android:name=".ui.BaseWebviewActivity" />
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="375" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="1132" />
+
+        <activity android:name=".ui.login.SetPayPasswordActivity" />
+        <activity android:name=".ui.mine.message.RecentContactsActivity" />
+        <activity android:name=".ui.login.ForgetPassActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".ui.login.PwdLoginActivity" />
+        <activity android:name=".ui.login.LoginHomeActivity" />
+        <activity android:name=".ui.login.LoginPhoneActivity" />
+        <activity android:name=".ui.home.PromotionalGoodsActivity" />
+        <activity android:name=".ui.home.FloorActivity" />
+        <activity android:name=".ui.home.SearchActivity" />
+        <activity android:name=".ui.home.SignInActivity" />
+        <activity android:name=".ui.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTask" /> <!-- 百度地图 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="o1Ky22iAEGFgIoakjGZXhYFBWenk9QPq" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" /> <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+    </application>
+
+</manifest>

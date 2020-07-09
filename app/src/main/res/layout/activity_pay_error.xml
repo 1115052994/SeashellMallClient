@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.good.order.PayErrorActivity">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F6F6F7"
+            android:orientation="vertical">
+
+        <include
+                android:id="@+id/include"
+                layout="@layout/sharemall_include_title_bar" />
+
+        <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                    <skin.support.widget.SkinCompatImageView
+                            android:id="@+id/iv_error"
+                            android:layout_width="65dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/sharemall_oval_56dp_ff9241"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/sharemall_ic_result_fail" />
+
+                    <TextView
+                            android:id="@+id/tv_pay_error"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sharemall_order_pay_failure"
+                            android:textColor="#ff333333"
+                            android:textSize="20sp" />
+
+                    <com.liemi.seashellmallclient.widget.MyRecyclerView
+                            android:id="@+id/rv_goods"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="21dp"
+                            android:overScrollMode="never" />
+
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/tv_read_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/basemall_radius_4dp_ef574c"
+                        android:gravity="center"
+                        android:onClick="doClick"
+                        android:paddingVertical="14dp"
+                        android:text="@string/sharemall_look_order"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+
+                <TextView
+                        android:id="@+id/tv_back_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/baselib_bg_white_radius_4"
+                        android:gravity="center"
+                        android:onClick="doClick"
+                        android:paddingVertical="14dp"
+                        android:text="@string/sharemall_back_home"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="16sp" />
+
+                <TextView
+                        android:id="@+id/tv_tips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/sharemall_safety_reminder"
+                        android:textColor="#999999"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_back_home" />
+
+                <TextView
+                        android:id="@+id/tv_tip_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="6dp"
+                        android:textColor="#ff999999"
+                        android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

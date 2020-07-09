@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/iv_exit"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/sharemall_ic_share_cancel" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入交易密码"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/gray_33"
+        android:id="@+id/tv_title"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="16dp"
+        android:id="@+id/ll_pwd">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:textColor="@color/gray_33"
+            android:textColorHint="@color/gray_99"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入支付密码"
+            android:inputType="numberPassword"
+            android:paddingHorizontal="16dp"
+            android:background="@null"
+            android:id="@+id/et_pwd"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:id="@+id/tv_enter"
+            android:paddingHorizontal="10sp"
+            android:paddingVertical="6sp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/basemall_radius_4dp_ef574c"/>
+    </LinearLayout>
+
+    <com.liemi.seashellmallclient.widget.PwdKeyboardView
+        android:id="@+id/key_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_pwd"
+        android:layout_marginTop="16dp"
+        android:background="#919191"
+        android:keepScreenOn="true"
+        android:keyBackground="@drawable/selector_key_board"
+        android:keyTextColor="@android:color/black"
+        android:keyTextSize="26sp"
+        android:shadowRadius="0" />
+
+
+</RelativeLayout>

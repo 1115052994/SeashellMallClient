@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.category.GoodsOneCateEntity" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@{item.check ?  @color/white : @color/gray_F8}"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="3dp"
+            android:layout_height="50dp"
+            android:background="@color/bgColor"
+            android:visibility="@{item.check ? View.VISIBLE : View.INVISIBLE}" />
+
+        <TextView
+            android:id="@+id/tv_goods_cate_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/v_divider"
+            android:enabled="@{item.check}"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="@{item.name}"
+            android:textColor="@drawable/sharemall_selector_category_text"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+</layout>

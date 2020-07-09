@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.vip.VIPGiftDetailActivity">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <include
+                android:id="@+id/layout_title"
+                layout="@layout/sharemall_include_title_bar"/>
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/rv_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:descendantFocusability="blocksDescendants"/>
+
+        <LinearLayout
+                android:id="@+id/ll_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/tv_more_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@mipmap/sharemall_ic_gift_gray"
+                    android:drawableLeft="@mipmap/sharemall_ic_gift_gray"
+                    android:drawablePadding="7dp"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="32dp"
+                    android:text="@string/sharemall_more_gift"
+                    android:textColor="#555555"
+                    android:textSize="14sp"/>
+
+            <TextView
+                    android:id="@+id/tv_buy_now"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bgColor"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingVertical="14dp"
+                    android:text="@string/sharemall_buy_now"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/tv_share_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgColor"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingVertical="14dp"
+                android:text="@string/sharemall_share_now"
+                android:textColor="#ffffffff"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+    </LinearLayout>
+</layout>

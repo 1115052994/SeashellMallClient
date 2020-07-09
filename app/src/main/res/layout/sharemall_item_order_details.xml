@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.OrderDetailedEntity.MainOrdersBean" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/sharemall_ic_right_gray"
+            android:onClick="@{doClick}"
+            android:padding="16dp"
+            android:text="@{item.shop.name}"
+            android:textColor="#ff1d1e1f"
+            android:textSize="14sp"
+            tools:text="店铺名称" />
+
+
+        <com.liemi.seashellmallclient.widget.MyRecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:overScrollMode="never" />
+
+
+        <!--卖家留言-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="16dp"
+            android:visibility="@{TextUtils.isEmpty(item.remark) ? View.GONE : View.VISIBLE }">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sharemall_radius_6dp_f8f8f8"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_buyer_remark"
+                    android:textColor="@color/gray_99"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@{item.remark}"
+                    android:textColor="@color/gray_33"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--发货单-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_not_see_invoices_price"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{item.display_price == 1 ? @string/sharemall_yes : @string/sharemall_no}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="是" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

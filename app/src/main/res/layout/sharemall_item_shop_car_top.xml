@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <com.liemi.seashellmallclient.widget.MyRecyclerView
+            android:id="@+id/rv_shop_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/tv_title_like"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/sharemall_guess_you_like_it2"
+            android:textColor="#ff333333"
+            android:layout_marginBottom="1dp"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:background="@color/white"/>
+
+    </LinearLayout>
+</layout>

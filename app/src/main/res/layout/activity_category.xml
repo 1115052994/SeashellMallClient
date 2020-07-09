@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.category.CategoryActivity">
+    <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_F8"
+            android:orientation="vertical">
+
+        <include layout="@layout/sharemall_status_bar" />
+
+        <LinearLayout
+                android:id="@+id/ll_top"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="doClick"
+                    android:padding="15dp"
+                    android:src="@mipmap/sharemall_icon_back_gray" />
+
+            <LinearLayout
+                    android:id="@+id/ll_search"
+                    android:layout_width="0dp"
+                    android:layout_height="33dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/sharemall_radius_15dp_f6f4f5"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:transitionName="@string/transition_name">
+
+                <TextView
+                        android:id="@+id/tv_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_search_hint"
+                        android:textColor="#C2C2C2"
+                        android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="15dp"
+                    android:src="@mipmap/sharemall_ic_message_gray_not" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_goods_cate"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray_F8"
+                    android:overScrollMode="never" />
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="16dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

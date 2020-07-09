@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.vip.VIPGiftEntity" />
+
+        <variable
+            name="isVIP"
+            type="Boolean" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="15dp">
+
+        <com.netmi.baselibrary.widget.RoundImageView
+            android:id="@+id/riv_image"
+            ivPathN="@{item.img_url}"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baselib_bg_default_pic" />
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/riv_image"
+            android:layout_toEndOf="@id/riv_image"
+            android:layout_toRightOf="@id/riv_image"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.title}"
+            android:textColor="#1D1E1F"
+            android:textSize="16sp"
+            tools:text="【舒客】防蛀固齿140克*3支牙膏组合装" />
+
+
+        <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/riv_image"
+            android:layout_toRightOf="@id/riv_image"
+            android:layout_alignBottom="@id/riv_image"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            android:text="@{item.getShowPrice()}"
+            android:textColor="@color/bgColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="¥3990.99" />
+
+
+        <TextView
+            android:id="@+id/tv_upgrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/riv_image"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/basemall_radius_4dp_ef574c"
+            android:gravity="center"
+            android:onClick="@{doClick}"
+            android:paddingLeft="12dp"
+            android:paddingTop="4dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="4dp"
+            android:text="@{@string/sharemall_format_vip_buy_gift(item.gift_name)}"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            tools:text="购买成为xxx"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/riv_image"
+            android:layout_marginTop="15dp"
+            android:background="@color/gray_EE" />
+
+    </RelativeLayout>
+
+</layout>

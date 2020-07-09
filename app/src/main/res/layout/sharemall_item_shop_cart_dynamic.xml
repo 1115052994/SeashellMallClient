@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.article.ShopCartArticleEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.getMMDDDCreate_time()}"
+                android:textColor="@{item.is_read == 1 ? @color/black_36 : @color/gray_BB}"
+                android:textSize="13sp"
+                tools:text="2018年1月18日" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/sharemall_oval_6dp_ff4343"
+                android:visibility="@{item.is_read == 1 ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <!--避免背景无法填充-->
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="@{doClick}"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    ivPathN="@{item.notice.show_img}"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baselib_bg_default_pic"
+                    android:visibility="@{Strings.isEmpty(item.notice.show_img) ? View.GONE : View.VISIBLE}"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="12dp"
+                    android:singleLine="true"
+                    android:text="@{item.title}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="16sp"
+                    tools:text="年轻时随着曹德旺的舅公到了日本" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:singleLine="true"
+                    android:text="@{item.remark}"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    tools:text="你的5元金币48小时内过期，机会难得，抓紧去使用吧~" />
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

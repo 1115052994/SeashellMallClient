@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@mipmap/sharemall_ic_follow_ok"
+        android:background="@drawable/comment_report_view_select"
+        android:padding="7dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/iv" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv"
+        android:layout_marginTop="8dp"
+        android:text="举报成功"
+        android:textColor="@color/white"
+        android:textSize="14sp"/>
+</RelativeLayout>

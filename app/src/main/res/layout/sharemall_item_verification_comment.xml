@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.verification.VerificationOrderDetailEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+        <import type="android.view.View" />
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="commentStr"
+            type="String"
+            />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp">
+
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:id="@+id/iv_good_pic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="centerCrop"
+                bind:ivPathN="@{item.img_url}"
+                android:contentDescription="@null"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:id="@+id/tv_star_server"
+                android:layout_marginTop="10dp"
+                android:text="@string/good_star_server"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_good_pic"
+                android:layout_toEndOf="@+id/iv_good_pic" />
+
+            <com.liemi.seashellmallclient.widget.RatingBarView
+                android:id="@+id/rb_star_server"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:starCount="5"
+                app:starEmpty="@mipmap/sharemall_ic_order_comment_unlike"
+                app:starFill="@mipmap/sharemall_ic_order_comment_like"
+                app:padding_right="9dp"
+                app:starImageSize="28dp"
+                android:layout_toRightOf="@id/tv_star_server"
+                android:layout_toEndOf="@id/tv_star_server" />
+            <!--评价文字-->
+            <TextView
+                android:layout_marginBottom="6dp"
+                android:layout_toRightOf="@+id/iv_good_pic"
+                android:layout_toEndOf="@+id/iv_good_pic"
+                android:layout_alignBottom="@+id/iv_good_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/gray_99"
+                android:text="@{commentStr}"
+                android:visibility="@{Strings.isEmpty(commentStr) ? View.GONE : View.VISIBLE}"
+                tools:text="非常好"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/gray_F6F6F7" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="@string/sharemall_order_comment_input_hint"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:minLines="3"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:textColor="@color/theme_text_black"
+            android:textColorHint="#999999"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:id="@+id/rv_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+        <View
+            android:id="@+id/v_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/theme_bg"
+            android:layout_marginTop="26dp"
+            />
+    </LinearLayout>
+
+
+
+</layout>

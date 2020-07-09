@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isEdit"
+            type="boolean" />
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.user.MineCollectionStoreEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/baselib_bg_white_radius_4"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp">
+
+        <ImageView
+            civPath="@{item.logo_url}"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@{item.name}"
+                android:textColor="#1f1f1e"
+                android:textSize="14sp"
+                tools:text="蓝色蚂蚁支架" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@{@string/basemall_store_goods_num(item.sum_item)}"
+                android:textColor="#878787"
+                android:textSize="10sp"
+                tools:text="100件商品" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cancle_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_15dp_gradient_ef574c"
+            android:onClick="@{doClick}"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:textColor="@color/white"
+            android:text="@string/sharemall_followed"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</layout>

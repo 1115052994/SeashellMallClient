@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsDetailedEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:onClick="@{doClick}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_ltrt8dp_ff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginRight="-10dp"
+                    android:onClick="@{doClick}"
+                    android:padding="10dp"
+                    android:src="@mipmap/sharemall_ic_cancel" />
+
+                <com.netmi.baselibrary.widget.RoundImageView
+                    android:id="@+id/iv_good_pic"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_marginRight="12dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baselib_bg_default_pic"
+                    bind:ivPath="@{item.img_url}" />
+
+                <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                    android:id="@+id/tv_choice_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/iv_good_pic"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/iv_good_pic"
+                    android:text="@{item.getShowPrice()}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="22sp"
+                    tools:text="100" />
+
+                <TextView
+                    android:id="@+id/tv_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_choice_price"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/iv_good_pic"
+                    android:textColor="#C0C0C0"
+                    android:textSize="12sp"
+                    tools:text="清新绿" />
+
+                <com.liemi.seashellmallclient.widget.GoodsTitleNormalTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/iv_good_pic"
+                    android:layout_marginBottom="6dp"
+                    android:layout_toRightOf="@+id/iv_good_pic"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@{@string/sharemall_format_stock_tips(item.stock)}"
+                    android:textColor="@color/black_1d1e1f"
+                    android:textSize="12sp"
+                    tools:text="库存：99124" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+            <com.liemi.seashellmallclient.widget.MaxHeightRecyclerView
+                android:id="@+id/rv_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingHorizontal="16dp"
+                app:maxHeight="350dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sharemall_buying_quantity"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="#ff646464"
+                    android:textSize="12sp"
+                    tools:text="(限购5件)" />
+
+                <!-- 增加减少按钮-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/tv_minus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sharemall_selector_shop_cart_minus"
+                        android:contentDescription="@null"
+                        android:enabled="@{Strings.toFloat(item.num) > 1}"
+                        android:onClick="@{doClick}" />
+
+                    <TextView
+                        android:id="@+id/tv_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:background="@drawable/sharemall_radius_4dp_f6f6f7_stroke_1dp_f3f3f4"
+                        android:gravity="center"
+                        android:minEms="2"
+                        android:padding="2dp"
+                        android:text="1"
+                        android:textColor="#ff1b252d"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:id="@+id/tv_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sharemall_selector_shop_cart_plus"
+                        android:contentDescription="@null"
+                        android:enabled="true"
+                        android:onClick="@{doClick}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_add_shop_cart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/bgColor"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="14dp"
+                    android:text="@string/sharemall_add_to_cart"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/bgColor"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingVertical="14dp"
+                    android:text="@string/sharemall_immediate_pay"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

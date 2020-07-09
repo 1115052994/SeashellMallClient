@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/sharemall_radius_2dp_f5f7f8"
+            android:contentDescription="@null"
+            android:onClick="@{doClick}"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/sharemall_ic_add_image" />
+
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/sharemall_oval_12dp_b52902"
+            android:padding="5dp"
+            android:onClick="@{doClick}"
+            android:src="@mipmap/ic_muilt_pic_delete"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+</layout>

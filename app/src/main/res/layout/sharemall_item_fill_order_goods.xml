@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsDetailedEntity" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_good"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/sharemall_radius_4dp_1aff9241"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:text="@string/sharemall_re_select_address"
+            android:textColor="@color/bgColor"
+            android:textSize="12sp"
+            android:visibility="@{item.can_buy == null ? View.VISIBLE : View.GONE}" />
+
+        <include
+            layout="@layout/sharemall_item_order_goods"
+            bind:item="@{item}" />
+
+    </LinearLayout>
+</layout>

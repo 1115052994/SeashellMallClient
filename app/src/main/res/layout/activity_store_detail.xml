@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tl="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.store.StoreDetailActivity">
+    <data>
+
+        <variable
+                name="item"
+                type="com.liemi.seashellmallclient.data.entity.StoreEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/theme_bg"
+            android:orientation="vertical">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/iv_store_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#99000000" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                <View
+                        android:id="@+id/view_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                <LinearLayout
+                        android:id="@+id/ll_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="doClick"
+                            android:padding="15dp"
+                            android:src="@mipmap/sharemall_ic_back" />
+
+                    <TextView
+                            android:id="@+id/tv_search"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/sharemall_radius_16dp_33ffffff"
+                            android:gravity="center_vertical"
+                            android:onClick="doClick"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="@string/sharemall_store_search"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    <TextView
+                            android:id="@+id/tv_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableTop="@mipmap/sharemall_ic_category"
+                            android:drawablePadding="3dp"
+                            android:onClick="doClick"
+                            android:paddingHorizontal="16dp"
+                            android:paddingTop="3dp"
+                            android:text="@string/sharemall_category"
+                            android:textColor="#fff6f6f7"
+                            android:textSize="12sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="20dp">
+
+                    <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/riv_image"
+                            ivPath="@{item.logo_url}"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_marginRight="12dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/baselib_bg_default_pic"
+                            android:transitionName="@string/transition_store"/>
+
+                    <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/riv_image"
+                            android:text="@{item.name}"
+                            android:textColor="#ffffffff"
+                            android:textSize="17sp"
+                            tools:text="岚田商城"
+                            android:transitionName="@string/transition_store_name"/>
+
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_name"
+                            android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@id/riv_image"
+                            android:text="@{@string/sharemall_format_goods_sum(item.sum_item)}"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            tools:text="共78件商品" />
+
+
+                    <TextView
+                            android:id="@+id/tv_follow_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/riv_image"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="1dp"
+                            android:layout_toRightOf="@id/riv_image"
+                            android:text="@{@string/sharemall_format_follow(item.sum_collection)}"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            tools:text="78人关注" />
+
+                    <TextView
+                            android:id="@+id/tv_follow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/sharemall_selector_follow_text"
+                            android:drawableLeft="@drawable/sharemall_selector_follow_img"
+                            android:drawablePadding="6dp"
+                            android:onClick="doClick"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="8dp"
+                            android:text="@{item.is_collection == 1 ? @string/sharemall_followed : @string/sharemall_follow}"
+                            android:textColor="#ffffffff"
+                            android:textSize="14sp"
+                            tools:text="@string/sharemall_followed"/>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+                android:id="@+id/tl_group"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white"
+                tl:tl_indicator_color="@color/bgColor"
+                tl:tl_indicator_height="2dp"
+                tl:tl_tab_space_equal="true"
+                tl:tl_textSelectColor="@color/bgColor"
+                tl:tl_textUnselectColor="#555555"
+                tl:tl_textsize="15sp" />
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/vp_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

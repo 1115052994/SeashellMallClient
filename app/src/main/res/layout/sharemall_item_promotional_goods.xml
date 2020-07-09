@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isVIP"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsListEntity" />
+
+        <import type="android.view.View" />
+
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <com.liemi.seashellmallclient.widget.EquiRoundImageView
+            android:id="@+id/resizableImageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baselib_bg_default_pic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:ivPathN="@{item.img_url}" />
+
+        <com.liemi.seashellmallclient.widget.GoodsTitleNormalTextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.title}"
+            android:textColor="@color/black_1d1e1f"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/resizableImageView"
+            app:layout_constraintTop_toTopOf="@+id/resizableImageView"
+            tools:text="进口白咖啡 ] 经典口味 口感醇厚 金爸爸经典10条装" />
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{item.remark}"
+            android:textColor="#c0c0c0"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:text="天生皮黄，自带清新奶昔！" />
+
+        <FrameLayout
+            android:id="@+id/fl_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingRight="8dp"
+            android:visibility="@{isVIP ? View.GONE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sharemall_radius_2dp_stroke_1dp_b52902"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="3dp"
+                android:text="@string/sharemall_new_people_price"
+                android:textColor="@color/bgColor"
+                android:textSize="10sp" />
+
+        </FrameLayout>
+
+        <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{item.formatMoney(item.price)}"
+            android:textColor="@color/bgColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/fl_label"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            tools:text="3990.99" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_9dp_d6bf9e"
+            android:paddingRight="6dp"
+            android:visibility="@{isVIP?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView7">
+
+            <TextView
+                android:id="@+id/tv_spike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sharemall_oval_12dp_b52902"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="2dp"
+                android:text="@string/sharemall_earn"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_toEndOf="@+id/tv_spike"
+                android:layout_toRightOf="@+id/tv_spike"
+                android:text="@{item.formatMoney(item.share)}"
+                android:textColor="@color/bgColor"
+                android:textSize="11sp"
+                tools:text="¥39.9" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@{isVIP ? @string/sharemall_format_goods_sale(item.deal_num) : @string/sharemall_format_sales_volume2(item.deal_num)}"
+            android:textColor="@color/gray_99"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/resizableImageView"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            tools:text="已售98798件" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/resizableImageView"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tv_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sharemall_radius_3dp_gradient_1d1e1f_3e4042"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="4dp"
+                android:text="@string/sharemall_buy"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="@{isVIP ? View.GONE : View.VISIBLE}"
+                tools:text="购买" />
+
+            <TextView
+                android:id="@+id/tv_buy_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sharemall_radius_3dp_ff_stroke_1dp_1d1e1f"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="4dp"
+                android:text="@string/sharemall_rush_buy"
+                android:textColor="@color/sharemall_text_theme_main"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="@{isVIP ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:id="@+id/tv_extend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/sharemall_radius_3dp_gradient_1d1e1f_3e4042"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="4dp"
+                android:text="@string/sharemall_promotional"
+                android:textColor="#ffffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="@{isVIP ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

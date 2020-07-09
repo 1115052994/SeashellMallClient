@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.LogisticEntity.ListBean" />
+
+        <variable
+            name="position"
+            type="int" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_logistics_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColor="#ff555555"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="06-17" />
+
+            <TextView
+                android:id="@+id/tv_logistics_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tv_logistics_date"
+                android:layout_alignRight="@+id/tv_logistics_date"
+                android:layout_marginTop="3dp"
+                android:textColor="#ff888888"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_logistics_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_logistics_date"
+                tools:text="10:02" />
+
+
+            <skin.support.widget.SkinCompatImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="12dp"
+                android:src="@drawable/sharemall_oval_40dp_cad5de"
+                app:layout_constraintStart_toEndOf="@+id/tv_logistics_date"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="2dp"
+                android:layout_height="73dp"
+                android:background="#CAD5DE"
+                app:layout_constraintEnd_toEndOf="@+id/iv_icon"
+                app:layout_constraintStart_toStartOf="@+id/iv_icon"
+                app:layout_constraintTop_toBottomOf="@+id/iv_icon" />
+
+            <TextView
+                android:id="@+id/tv_logistics_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:text="@{item.content}"
+                android:textColor="#ff888888"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_icon"
+                app:layout_constraintTop_toTopOf="@+id/iv_icon"
+                tools:text="快件在【杭州总集散中心】已装车，准备发往 【杭州下城现代置业大厦营业部】" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+    </LinearLayout>
+</layout>

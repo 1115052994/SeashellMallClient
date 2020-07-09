@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.userinfo.ChangePhoneActivity">
+    <data>
+
+        <variable
+            name="textAfter"
+            type="android.databinding.adapters.TextViewBindingAdapter.AfterTextChanged" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F6F6F7"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/sharemall_include_title_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--输入手机号-->
+            <EditText
+                android:id="@+id/et_input_new_phone"
+                style="@style/sharemall_textViewLine1"
+                android:background="@null"
+                android:hint="@string/sharemall_input_new_phone"
+                android:padding="16dp"
+                android:textColor="@color/black_1d1e1f"
+                android:textColorHint="@color/gray_99"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+            <include layout="@layout/sharemall_layout_image_code_two" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--验证码-->
+                <EditText
+                    android:id="@+id/et_input_verification_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/sharemall_please_input_verification_code"
+                    android:padding="16dp"
+                    android:textColor="@color/black_1d1e1f"
+                    android:textColorHint="@color/gray_99"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingLeft="9dp"
+                    android:paddingTop="6dp"
+                    android:paddingRight="9dp"
+                    android:paddingBottom="6dp"
+                    android:text="@string/sharemall_get_verification_code"
+                    android:textColor="@drawable/sharemall_selector_coloref574c_color999"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_EE" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/basemall_radius_4dp_ef574c"
+            android:enabled="true"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="@string/sharemall_commit"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</layout>

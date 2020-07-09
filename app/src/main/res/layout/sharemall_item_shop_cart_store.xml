@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.StoreEntity" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rl_content"
+        setMarginTop="@{position &gt; 0 ? @dimen/d_5 : @dimen/dp_0 }"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="@={item.checked}"
+            android:drawableEnd="@{item.isForbidden() ? @drawable/sharemall_selector_check_enable_gold : @drawable/sharemall_selector_check_btn_gold}"
+            android:drawableRight="@{item.isForbidden() ? @drawable/sharemall_selector_check_enable_gold : @drawable/sharemall_selector_check_btn_gold}"
+            android:enabled="@{!item.isForbidden()}"
+            android:onClick="@{doClick}"
+            android:paddingVertical="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="12dp" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableRight="@mipmap/sharemall_ic_right_gray"
+            android:drawablePadding="9dp"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:text="@{item.name}"
+            android:textColor="@color/black_1d1e1f"
+            android:textSize="14sp"
+            tools:text="店铺名称" />
+
+    </LinearLayout>
+
+
+</layout>

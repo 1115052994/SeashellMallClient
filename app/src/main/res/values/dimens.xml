@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- map -->
+
+    <dimen name="text_size_l">18sp</dimen>
+    <dimen name="text_size_m">16sp</dimen>
+
+    <dimen name="divider_height">0.5dp</dimen>
+    <dimen name="s_15">15sp</dimen>
+    <dimen name="s_14">14sp</dimen>
+    <dimen name="s_10">10sp</dimen>
+    <dimen name="s_16">16sp</dimen>
+
+    <dimen name="d_0">0dp</dimen>
+    <dimen name="d_5">5dp</dimen>
+    <dimen name="d_1">1dp</dimen>
+    <dimen name="d_8">8dp</dimen>
+    <dimen name="d_10">10dp</dimen>
+    <dimen name="d_50">50dp</dimen>
+    <dimen name="d_30">30dp</dimen>
+    <dimen name="d_3">3dp</dimen>
+    <dimen name="d_40">40dp</dimen>
+    <dimen name="d_45">45dp</dimen>
+    <dimen name="d_15">15dp</dimen>
+    <dimen name="d_14">15dp</dimen>
+    <dimen name="d_16">16dp</dimen>
+    <dimen name="d_17">17dp</dimen>
+    <dimen name="d_12">12dp</dimen>
+    <dimen name="d_25">25dp</dimen>
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="d_168">168dp</dimen>
+    <dimen name="status_bar_height">25dp</dimen>
+
+    <!-- map -->
+    <dimen name="friend_map_btn_height">42dp</dimen>
+    <dimen name="friend_map_bound_padding">80dp</dimen>
+</resources>

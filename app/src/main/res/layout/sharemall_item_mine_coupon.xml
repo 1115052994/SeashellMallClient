@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.user.MineCouponEntity" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <!--未使用的优惠券和其它的优惠券的背景不同-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/sharemall_bg_mine_coupon">
+
+            <ImageView
+                android:id="@+id/iv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="12dp"
+                android:visibility="@{item.status == 1 ?  View.GONE : View.VISIBLE}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:paddingLeft="16dp">
+
+
+                <!--优惠券金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <!--金额-->
+                    <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                        android:id="@+id/tv_coupon_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@{item.formatMoney(item.discount_num)}"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        tools:text="¥5.00" />
+
+                    <!--满多少可用及有效期-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <!--优惠券名称-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@{item.name}"
+                                android:textColor="#999999"
+                                android:textSize="12sp"
+                                tools:text="仅限在线商城使用" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:background="@drawable/sharemall_radius_6dp_ff9241"
+                                android:paddingHorizontal="6dp"
+                                android:paddingVertical="2dp"
+                                android:text="@{item.typeName}"
+                                android:textColor="#ffffffff"
+                                android:textSize="6sp"
+                                tools:text="平台通用券" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:lines="1"
+                            android:text="@{@string/sharemall_format_can_use_rule(item.condition_num)}"
+                            android:textColor="@{item.status == 1 ? @color/gray_33 : @color/gray_99}"
+                            android:textSize="16sp"
+                            tools:text="满60元可用" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:text="@{@string/sharemall_format_coupon_expire(item.expire)}"
+                            android:textColor="@color/gray_99"
+                            android:textSize="12sp"
+                            tools:text="有效期：2019.12.12--2302.12.12" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp">
+                    <!--邀请人-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:singleLine="true"
+                        android:text="@{@string/sharemall_format_mine_coupon_invite(item.invite_name)}"
+                        android:textColor="#555555"
+                        android:textSize="12sp"
+                        android:visibility="@{Strings.isEmpty(item.invite_name) ? View.INVISIBLE : View.VISIBLE}"
+                        tools:text="邀请人：3C设计" />
+
+                    <TextView
+                        android:id="@+id/tv_use"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/sharemall_radius_8dp_stroke_1dp_ff9241"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="3dp"
+                        android:text="@string/sharemall_immediate_use"
+                        android:onClick="@{doClick}"
+                        android:textColor="@color/bgColor"
+                        android:textSize="8sp"
+                        android:visibility="@{item.status == 1 ? View.VISIBLE : View.GONE}" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <!--是否处于选中状态，只有未使用的优惠券才有-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginRight="12dp"
+                android:src="@{item.select ? @drawable/sharemall_icon_mine_coupon_un_select : @drawable/sharemall_icon_mine_coupon_select }"
+                android:visibility="@{item.status == 1 ? View.VISIBLE : View.GONE}" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="-5dp"
+            android:background="@drawable/sharemall_radius_lbrb8dp_0dff9241"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:visibility="@{item.status == 4 ? View.VISIBLE : View.GONE}">
+            <!--领取人信息,只有分享被领取才会有以下信息-->
+            <TextView
+                android:id="@+id/tv_mine_coupon_get_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{@string/sharemall_format_mine_coupon_get_people(item.receive_name)}"
+                android:textColor="@color/bgColor"
+                android:textSize="13sp"
+                tools:text="领取人：3c设计" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{item.receive_time}"
+                android:textColor="@color/bgColor"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</layout>

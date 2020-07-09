@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.wallet.WalletRechargeActivity">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.user.ShareMallUserInfoEntity" />
+        <variable
+            name="address"
+            type="String" />
+        <variable
+            name="remark"
+            type="String" />
+        <variable
+            name="code"
+            type="String" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
+        <include layout="@layout/sharemall_include_title_bar"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="440dp"
+                    android:background="@color/white"
+                    android:id="@+id/rl_content"
+                    android:paddingHorizontal="30dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp">
+                    <ImageView
+                        android:id="@+id/iv_avatar"
+                        civPathBorder="@{item.head_url}"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@null"
+                        android:src="@drawable/baselib_bg_default_circle_pic"
+                        android:transitionName="@string/person_transition_avatar" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textColor="#1D1E1F"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/tv_name"
+                        android:text="@{item.nickname}"
+                        android:layout_below="@id/iv_avatar"
+                        android:layout_centerHorizontal="true"
+                        tools:text="用户名"/>
+
+                    <ImageView
+                        android:layout_width="178dp"
+                        android:layout_height="178dp"
+                        android:id="@+id/iv_qrcode"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@id/tv_name"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray_33"
+                        android:textSize="18sp"
+                        tools:text="地址"
+                        android:id="@+id/tv_address"
+                        android:layout_below="@id/iv_qrcode"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_address"
+                        android:layout_marginTop="15dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="#777777"
+                        android:textSize="12sp"
+                        android:onClick="doClick"
+                        android:text="复制"
+                        android:gravity="center"
+                        android:drawableLeft="@mipmap/sharemall_hair_copy_img"
+                        android:paddingBottom="6dp"
+                        android:paddingRight="8dp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="6dp"
+                        android:drawableStart="@mipmap/sharemall_hair_copy_img"
+                        android:drawablePadding="5dp"
+                        android:background="@drawable/basemall_radius_3dp_f8f8f8"
+                        android:id="@+id/tv_copy"
+                        tools:text="复制"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="35dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="14sp"
+                    android:text="@{remark}"
+                    android:textColor="@color/gray_66"
+                    tools:text="充值备注"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/basemall_radius_10dp_gradient_ef574c"
+                    android:layout_marginHorizontal="30dp"
+                    android:text="保存至相册"
+                    android:onClick="doClick"
+                    android:id="@+id/tv_save"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+</layout>

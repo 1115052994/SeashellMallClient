@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.CommendGoodEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        setMarginLeft="@{position % 2 == 0 ? @dimen/dp_0 : @dimen/divider_height}"
+        setMarginRight="@{position % 2 == 1 ? @dimen/dp_0 : @dimen/divider_height}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingVertical="12dp"
+        android:paddingLeft="@{position % 2 == 0 ? @dimen/d_15 : @dimen/d_8}"
+        android:paddingRight="@{position % 2 == 1 ? @dimen/d_15 : @dimen/d_8}">
+
+        <com.liemi.seashellmallclient.widget.EquiRoundImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_168"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            bind:ivPathN="@{item.img_url}" />
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.title}"
+            android:textColor="@color/black_1d1e1f"
+            android:textSize="14sp"
+            tools:text="[ 进口白咖啡 ] 经典口味 口感醇厚 金爸爸经典10条装" />
+
+        <com.liemi.seashellmallclient.widget.SpecsTagFlowLayout
+            android:id="@+id/id_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:max_select="-1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                android:id="@+id/tv_good_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.formatMoney(item.price)}"
+                android:textColor="@color/bgColor"
+                android:textSize="16sp"
+                tools:text="￥39.90" />
+
+            <com.liemi.seashellmallclient.widget.StrikeTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:text="@{item.old_price}"
+                android:textColor="#c0c0c0"
+                android:textSize="12sp"
+                tools:text="￥39.90" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.locallife.LocalLifeGoodsDetailEntity" />
+
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:id="@+id/ll_footer"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="27dp"
+                    android:text="@{@string/sharemall_format_money(item.price)}"
+                    android:gravity="center"
+                    tools:text="@{@string/sharemall_format_money(1548)}"
+                    android:textSize="14sp"
+                    android:textColor="@color/bgColor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/tv_old_price"
+                    android:text="@{@string/sharemall_format_money(item.old_price)}"
+                    android:gravity="center"
+                    tools:text="@{@string/sharemall_format_money(1548)}"
+                    android:textSize="14sp"
+                    android:textColor="#7B7B7B"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_buy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/bgColor"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:text="@string/local_life_immediately_buy"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="立即抢购" />
+        </LinearLayout>
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_footer"
+            android:layout_below="@id/ll_head"
+            android:overScrollMode="never" />
+        <LinearLayout
+            android:elevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_head"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/rl_title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/ll_back"
+                    android:layout_width="@dimen/d_50"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/d_14">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        android:src="@mipmap/baselib_ic_back" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d_68"
+                    android:layout_marginRight="@dimen/d_68"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text=""
+                    android:textColor="#0d0d0d"
+                    android:textSize="@dimen/s_16"
+                    android:transitionName="@string/transition_title_name" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

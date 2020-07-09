@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mine.order.LogisticTrackActivity">
+    <data>
+
+        <variable
+                name="item"
+                type="com.liemi.seashellmallclient.data.entity.order.LogisticEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_f2"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="@{item.company}"
+                    android:textColor="#ff1b252d"
+                    android:textSize="16sp" />
+
+            <TextView
+                    android:id="@+id/tv_logistics_no"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@{item.code}"
+                    android:textColor="#ff888888"
+                    android:textSize="14sp"
+                    tools:text="7384927839" />
+
+            <skin.support.widget.SkinCompatTextView
+                    android:id="@+id/tv_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{doClick}"
+                    android:padding="16dp"
+                    android:text="复制单号"
+                    android:textColor="@color/bgColor"
+                    android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:onClick="doClick"
+                android:src="@mipmap/ic_down_select"
+                android:id="@+id/spinner"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="#88E4EAEE" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sharemall_radius_4dp_f5f6f7"
+            android:gravity="center_vertical"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="12dp"
+            android:padding="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注信息："
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@{item.remark}"
+                android:textColor="#ff888888"
+                android:textSize="14sp"
+                tools:text="热加工；"/>
+
+        </LinearLayout>
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/xrv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

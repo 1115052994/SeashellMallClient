@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="text"
+            type="String"/>
+        <variable
+            name="isEnable"
+            type="Boolean"/>
+    </data>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:enabled="@{isEnable}"
+            android:id="@+id/iv_sign_status"
+            android:src="@drawable/sharemall_selector_sign_record"
+            android:layout_width="22dp"
+            android:layout_height="34dp" />
+        <TextView
+            android:gravity="center"
+            android:layout_alignBottom="@+id/iv_sign_status"
+            android:layout_width="22dp"
+            android:layout_height="20dp"
+            android:text="@{text}"
+            android:textColor="#ffffffff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</layout>

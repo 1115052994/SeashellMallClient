@@ -1,0 +1,124 @@
+apply plugin: 'com.android.library'
+apply plugin: "com.mob.sdk"
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //bugly配置，支持的SO库架构
+            abiFilters 'armeabi' , 'x86'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        develop {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:support-v4:27.1.1'
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:recyclerview-v7:27.1.1'
+    api 'com.android.support:cardview-v7:27.1.1'
+    api 'com.android.support:design:27.1.1'
+    api 'com.android.support.constraint:constraint-layout:1.1.3'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+    api 'org.greenrobot:eventbus:3.1.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    //基于RXJava的权限管理
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    //bugly应用更新
+    api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //下拉刷新，上拉加载控件
+    api('com.jcodecraeer:xrecyclerview:1.5.9') {
+        exclude(group: 'com.android.support')
+    }
+    //glide图片加载
+    api('com.github.bumptech.glide:glide:4.9.0') {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    //阿里云OSS,图片上传
+    api 'com.aliyun.dpa:oss-android-sdk:+'
+    //仿IOS的PickerView控件
+    api 'com.contrarywind:Android-PickerView:3.2.7'
+    //图片选择控件
+    api 'com.github.lsqt68:imagepicker:1.0.8'
+    //tab切换
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //圆角图片控件
+    api 'com.makeramen:roundedimageview:2.3.0'
+    //二维码扫描
+    api 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+    //状态栏控件
+    api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    //复杂布局
+    api 'com.alibaba.android:tangram:3.3.6'
+    //广告栏控件
+    api 'com.github.pinguo-zhouwei:MZBannerView:v2.0.2'
+    //加载框
+    api 'com.kaopiz:kprogresshud:1.2.0'
+    //分割线
+    api 'com.github.fondesa:recycler-view-divider:2.0.1'
+    //弹出筛选框控件
+    api 'me.ccj.PopsTabView:poptabview_lib:1.5.0'
+
+}
+
+MobSDK {
+    appKey "2e520d6df7d32"
+    appSecret "b4d9061dd689789fa2a4ab18fb614eaa"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            Wechat {
+                appId "wx5f0731c28fbaf58d"
+                appSecret "56bc441b83ede3c060aaaab097babd49"
+            }
+            WechatMoments {
+                appId "wx5f0731c28fbaf58d"
+                appSecret "56bc441b83ede3c060aaaab097babd49"
+            }
+        }
+    }
+}

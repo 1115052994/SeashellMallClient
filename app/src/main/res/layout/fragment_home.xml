@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tl="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+                name="doClick"
+                type="android.view.View.OnClickListener" />
+
+
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
+
+        <LinearLayout
+                android:id="@+id/ll_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+            <ImageView
+                    android:id="@+id/iv_scan_qr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/sharemall_ic_scan_qr" />
+
+            <TextView
+                    android:id="@+id/tv_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/sharemall_radius_4dp_f1"
+                    android:drawableLeft="@mipmap/sharemall_home_top_serach"
+                    android:drawablePadding="6dp"
+                    android:gravity="center_vertical"
+                    android:onClick="@{doClick}"
+                    android:paddingVertical="9dp"
+                    android:paddingLeft="60dp"
+                    android:text="@string/sharemall_search_good_hint"
+                    android:textColor="@color/gray_99"
+                    android:textSize="12sp" />
+
+
+            <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/sharemall_ic_message_black" />
+
+        </LinearLayout>
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+                android:id="@+id/st_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/ll_top"
+                android:layout_gravity="center_vertical|center"
+                android:background="@color/white"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                tl:tl_indicator_color="@color/bgColor"
+                tl:tl_indicator_height="3dp"
+                tl:tl_indicator_width="20dp"
+                tl:tl_indicator_width_equal_title="true"
+                tl:tl_textSelectColor="@color/sharemall_text_theme_main"
+                tl:tl_textUnselectColor="#b2b2b2"
+                tl:tl_textsize="14sp" />
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/vp_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/st_title" />
+
+        <com.liemi.seashellmallclient.widget.DragFloatImageView
+                android:onClick="@{doClick}"
+                android:id="@+id/iv_shop_car"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="9dp"
+                android:layout_marginBottom="200dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_float_shop_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@null" />
+
+    </RelativeLayout>
+</layout>

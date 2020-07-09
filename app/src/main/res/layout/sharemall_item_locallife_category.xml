@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/ll_category">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods_cate"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_F8"
+            android:overScrollMode="never" />
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/white"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+</layout>

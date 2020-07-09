@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <!--订单Item页面-->
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+        <!--点击事件-->
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenFooter"
+            type="boolean" />
+
+        <!--订单信息-->
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.verification.VerificationOrderDetailEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <!--订单编号和订单状态-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp">
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/sharemall_ic_right_gray"
+                android:drawablePadding="9dp"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingVertical="14dp"
+                android:text="@{item.shop.name}"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp"
+                tools:text="店铺名称" />
+
+            <!--订单状态-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{item.statusFormat}"
+                android:textColor="#1D1E1F"
+                android:textSize="14sp"
+                tools:text="待付款" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+
+        <LinearLayout
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:onClick="@{doClick}"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp">
+
+            <FrameLayout
+                android:id="@+id/fl_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.netmi.baselibrary.widget.RoundImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baselib_bg_default_pic"
+                    bind:ivPathN="@{item.shop.logo_url}" />
+            </FrameLayout>
+
+            <!--商品详情-->
+            <RelativeLayout
+                android:id="@+id/rl_good_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
+                <!--商品名称-->
+                <com.liemi.seashellmallclient.widget.GoodsTitleNormalTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="1"
+                    android:text="@{item.create_time}"
+                    android:textColor="#393939"
+                    android:textSize="12sp"
+                    tools:text="2019新款Apple/苹果 MacBook Pro MLH42CH/A国行笔记本15寸" />
+
+                <!--商品规格-->
+                <TextView
+                    android:id="@+id/tv_good_specification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="9dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_99"
+                    android:textSize="@dimen/s_10"
+                    tools:text="规格:42mm+蜂窝移动版" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/tv_name"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sharemall_actual_payment"
+                        android:textSize="14sp"
+                        android:id="@+id/tv"
+                        android:textColor="#999999"/>
+                    <!--商品实际价格-->
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:lines="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/tv"
+                        android:text="@{item.amount}"
+                        android:textColor="@color/bgColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="￥1500" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="#ECECEC" />
+        <!--商品合计和订单操作-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="6dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_order_function1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sharemall_radius_13dp_stroke_1dp_999"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.leftButtonStr}"
+                    android:textColor="@color/gray_55"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.leftButtonStr)? View.GONE : View.VISIBLE }"
+                    tools:text="查看物流" />
+
+                <TextView
+                    android:id="@+id/tv_order_function2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/sharemall_radius_13dp_stroke_1dp_ef574c"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.rightButtonStr}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.rightButtonStr)? View.GONE : View.VISIBLE  }"
+                    tools:text="确认收货" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

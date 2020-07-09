@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.verification.VerificationMinOrderPaySuccessActivity">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.order.OrderPayEntity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <include
+            android:id="@+id/include"
+            layout="@layout/sharemall_include_title_bar" />
+        <ImageView
+            android:id="@+id/iv_error"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/sharemall_oval_56dp_ff9241"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_pay_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/sharemall_pay_failure"
+            android:textColor="#1F1F1F"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/iv_error"
+            app:layout_constraintStart_toStartOf="@+id/iv_error"
+            app:layout_constraintTop_toBottomOf="@+id/iv_error" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pay_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="¥507.00"
+            android:visibility="gone"
+            android:textColor="@color/bgColor"
+            android:textSize="16sp" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/tv_pay_error"
+            android:id="@+id/tv_finish"
+            android:layout_width="112dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/sharemall_radius_18dp_ff9241"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/sharemall_finish"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+       <!-- <TextView
+            app:layout_constraintTop_toBottomOf="@+id/tv_pay_error"
+            android:id="@+id/tv_read_order"
+            android:layout_width="190dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/basemall_radius_21dp_d81e06"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/look_order"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/tv_read_order"
+            android:id="@+id/tv_buy"
+            android:layout_width="190dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_radius21_colortran_stroke1_d81e06"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/sharemall_back_home2"
+            android:textColor="#D81E06"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_read_order"
+            app:layout_constraintStart_toStartOf="@+id/tv_read_order" />-->
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="dialogTitle"
+            type="String"/>
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/tv_title"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="19dp"
+                android:text="@string/sharemall_cargo_status"
+                android:textColor="#ff1f1f1e"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+            <android.support.v7.widget.RecyclerView
+                android:divider="@null"
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:background="@color/gray_F6F6F7"
+                />
+            <TextView
+                android:id="@+id/tv_close"
+                android:gravity="center"
+                android:text="@string/sharemall_close"
+                android:textColor="#ffffffff"
+                android:textSize="15sp"
+                android:background="@color/bgColor"
+                android:layout_width="match_parent"
+                android:layout_height="47dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

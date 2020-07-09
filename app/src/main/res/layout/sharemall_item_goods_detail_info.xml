@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsDetailedEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="isVIP"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.liemi.seashellmallclient.widget.GoodsTitleNormalTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:text="@{item.title}"
+            android:textColor="#1D1E1F"
+            android:textSize="14sp"
+            tools:text="进口白咖啡 ] 经典口味 口感醇厚 金爸爸经典10条装" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="8dp"
+            android:text="@{item.remark}"
+            android:textColor="#c0c0c0"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:text="天生皮黄，自带清新奶昔！" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="20dp">
+
+            <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.formatMoney(item.price)}"
+                android:textColor="@color/bgColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="39.90" />
+
+            <TextView
+                android:id="@+id/tv_old_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="@{item.formatMoney(item.old_price)}"
+                android:textColor="#ff999999"
+                android:textSize="12sp"
+                android:layout_alignBottom="@id/tv_price"
+                android:layout_toRightOf="@id/tv_price"
+                android:visibility="@{TextUtils.isEmpty(item.old_price) ? View.INVISIBLE : View.VISIBLE}"
+                tools:text="¥39.90" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_seashells"
+                    android:text="@{@string/sharemall_hai_bei(item.currency)}"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/bgColor"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@id/tv_price"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/tv_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/sharemall_ic_free"
+                android:drawablePadding="8dp"
+                android:textColor="#999999"
+                android:textSize="12sp"
+                tools:text="包邮" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@mipmap/sharemall_buy_num"
+                    android:drawableLeft="@mipmap/sharemall_buy_num"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text="@{@string/sharemall_format_goods_detail_sale(item.deal_num)}"
+                    android:textColor="#ff999999"
+                    android:textSize="12sp"
+                    tools:text="526546人购买" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@mipmap/sharemall_ic_address"
+                android:drawableLeft="@mipmap/sharemall_ic_address"
+                android:drawablePadding="9dp"
+                android:gravity="center"
+                android:maxLength="8"
+                android:text="@{item.shop.full_name}"
+                android:textColor="#999999"
+                android:textSize="12sp"
+                tools:text="北京市" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="@string/sharemall_discount"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fl_coupon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:alignContent="flex_start"
+                app:alignItems="flex_start"
+                app:flexWrap="nowrap" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/baselib_ic_right_gray" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_select"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_property"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:drawableRight="@mipmap/baselib_ic_right_gray"
+                android:text="@string/sharemall_select_color_class"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_service"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:drawableRight="@mipmap/baselib_ic_right_gray"
+                android:textColor="#ff333333"
+                android:textSize="14sp"
+                tools:text="极速退货·正品保证·极速退款" />
+            <!--android:text="@{item.defaultService}"-->
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

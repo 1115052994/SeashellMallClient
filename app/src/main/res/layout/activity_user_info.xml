@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.userinfo.UserInfoActivity">
+
+    <data>
+        <!--用户信息-->
+        <variable
+            name="userInfo"
+            type="com.liemi.seashellmallclient.data.entity.user.ShareMallUserInfoEntity" />
+
+        <import type="com.liemi.seashellmallclient.data.param.ShareMallParam" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F7"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/sharemall_include_title_bar" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <!--头像-->
+                <LinearLayout
+                    android:id="@+id/ll_head_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_head_image"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_avatar"
+                        civPath="@{userInfo.head_url}"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/baselib_bg_default_circle_pic"
+                        android:transitionName="@string/person_transition_avatar" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@mipmap/sharemall_ic_user_info_more" />
+
+                </LinearLayout>
+
+                <!--昵称-->
+                <LinearLayout
+                    android:id="@+id/ll_nick_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_nick_name"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:drawableEnd="@mipmap/sharemall_ic_user_info_more"
+                        android:drawableRight="@mipmap/sharemall_ic_user_info_more"
+                        android:drawablePadding="6dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="200dp"
+                        android:maxLines="1"
+                        android:text="@{userInfo.nickname}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="15sp"
+                        android:transitionName="@string/person_transition_name"
+                        tools:text="3c设计" />
+
+                </LinearLayout>
+
+                <!--手机号-->
+                <LinearLayout
+                    android:id="@+id/ll_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_phone"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:drawableEnd="@mipmap/sharemall_ic_user_info_more"
+                        android:drawableRight="@mipmap/sharemall_ic_user_info_more"
+                        android:drawablePadding="6dp"
+                        android:text="@{userInfo.phone}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="15sp"
+                        tools:text="12312312" />
+
+
+                </LinearLayout>
+
+                <!--性别-->
+                <LinearLayout
+                    android:id="@+id/ll_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_sex"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:drawableEnd="@mipmap/sharemall_ic_user_info_more"
+                        android:drawableRight="@mipmap/sharemall_ic_user_info_more"
+                        android:drawablePadding="6dp"
+                        android:text="@{userInfo.sexFormat}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="15sp"
+                        tools:text="女" />
+                </LinearLayout>
+
+                <!--我的邀请者-->
+                <LinearLayout
+                    android:id="@+id/ll_mine_invite_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sharemall_mine_invite_person"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxWidth="200dp"
+                        android:maxLines="1"
+                        android:text="@{userInfo.is_invited==1?@string/sharemall_mine_invite_id(userInfo.up_nickname):@string/sharemall_no_invite_person}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="15sp"
+                        tools:text="3c设计" />
+
+                </LinearLayout>
+
+                <!--支付密码-->
+                <LinearLayout
+                    android:id="@+id/ll_pay_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="@{ShareMallParam.DISTRIBUTOR_OPEN ? View.VISIBLE : View.GONE}">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="账户安全"
+                        android:textColor="@color/black_1d1e1f"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:drawableEnd="@mipmap/sharemall_ic_user_info_more"
+                        android:drawableRight="@mipmap/sharemall_ic_user_info_more"
+                        android:drawablePadding="6dp"
+                        android:text="@{userInfo.is_set_paypassword == 1 ? @string/sharemall_empty : @string/sharemall_pay_password_no_setting}"
+                        android:textColor="@{userInfo.is_set_paypassword == 1 ? @color/bgColor : @color/gray_99}"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.SignInfoEntity.ListBean"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:paddingBottom="24dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_ic"
+            android:src="@mipmap/sharemall_ic_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginLeft="9dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textColor="#ff555555"
+            android:textSize="15sp" />
+        <View
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
+            android:text="@{@string/sharemall_format_plus_num(item.score)}"
+            android:textColor="#ffff8a40"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</layout>

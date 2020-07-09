@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+        <variable
+            name="checkListener"
+            type="android.widget.CompoundButton.OnCheckedChangeListener" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- 底部Tab-->
+        <LinearLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:paddingBottom="4dp">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/home_rb_style"
+                android:drawableTop="@drawable/sharemall_selector_tab_home"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="@string/sharemall_tab_home" />
+
+            <RadioButton
+                android:id="@+id/rb_local_life"
+                style="@style/home_rb_style"
+                android:drawableTop="@drawable/sharemall_selector_tab_locallife"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="@string/sharemall_tab_local_life" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/home_rb_style"
+                android:drawableTop="@drawable/sharemall_selector_tab_mine"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="@string/sharemall_tab_mine" />
+
+        </LinearLayout>
+
+        <!-- 中间内容-->
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/rl_bottom" />
+
+    </RelativeLayout>
+
+</layout>

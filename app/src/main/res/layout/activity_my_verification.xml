@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.verification.MyVerificationActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:elevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_head"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/rl_title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/ll_back"
+                    android:layout_width="@dimen/d_50"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/d_14">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null"
+                        android:src="@mipmap/baselib_ic_back" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/d_68"
+                    android:layout_marginRight="@dimen/d_68"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="@string/sharemall_my_verification"
+                    android:textColor="#1D1E1F"
+                    android:textSize="@dimen/s_16"
+                    android:transitionName="@string/transition_title_name" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F2F2F2"></View>
+        <com.flyco.tablayout.SlidingTabLayout
+            app:tl_textSelectColor="@color/black_36"
+            app:tl_textUnselectColor="#878787"
+            app:tl_indicator_width="30dp"
+            app:tl_indicator_height="2dp"
+            app:tl_indicator_color="@color/bgColor"
+            app:tl_divider_padding="12dp"
+            android:layout_marginTop="1dp"
+            android:textSize="14sp"
+            android:id="@+id/tl_verification"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#F2F2F2"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_verification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

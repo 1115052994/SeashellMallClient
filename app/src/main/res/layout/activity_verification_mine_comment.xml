@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.verification.VerificationMineCommentActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F6F6F7"
+        android:orientation="vertical">
+
+        <include layout="@layout/sharemall_include_title_bar"
+            android:id="@+id/ll_title"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_below="@id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_comment"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/sharemall_issue"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/basemall_radius_10dp_gradient_ef574c"/>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mine.refund.RefundApplySuccessActivity">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+        <include
+                android:id="@+id/include_title"
+                layout="@layout/sharemall_include_title_bar" />
+
+
+        <ImageView
+                android:id="@+id/iv_status"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_below="@+id/include_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:src="@mipmap/sharemall_ic_refund_apply_success"
+                android:contentDescription="@null" />
+
+        <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_status"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="@string/sharemall_request_refund_success"
+                android:textColor="@color/gray_33"
+                android:textSize="20sp" />
+
+        <TextView
+                android:id="@+id/tv_remind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tip"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/sharemall_request_refund_success_hint"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp" />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_remind"
+                android:background="@color/gray_F6F6F7"
+                android:layout_marginTop="30dp"
+        />
+
+        <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/basemall_radius_4dp_ef574c"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="@string/sharemall_finish"
+                android:textColor="#ffffffff"
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingBottom="14dp"
+                android:paddingTop="14dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tv_remind"
+                android:layout_marginTop="60dp"
+        />
+
+
+
+    </RelativeLayout>
+</layout>

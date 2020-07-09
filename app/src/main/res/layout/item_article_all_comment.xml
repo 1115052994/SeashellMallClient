@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.article.ArticleCommentEntity" />
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+        <import type="android.text.TextUtils"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/iv_head"
+            civPath="@{item.head_url}"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baselib_bg_default_circle_pic" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_head"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_toStartOf="@+id/rb_star_server"
+            android:layout_toLeftOf="@+id/rb_star_server"
+            android:layout_toEndOf="@+id/iv_head"
+            android:layout_toRightOf="@+id/iv_head"
+            android:singleLine="true"
+            android:text="@{item.nickname}"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            tools:text="谭霞" />
+
+        <TextView
+            android:id="@+id/tv_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_username"
+            android:layout_alignLeft="@id/tv_username"
+            android:layout_marginTop="4dp"
+            android:text="@{item.create_time}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            tools:text="2019-05-09"
+            android:layout_alignStart="@id/tv_username" />
+
+        <TextView
+            android:id="@+id/tv_report"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_toLeftOf="@id/cb_give_like"
+            android:layout_marginTop="5dp"
+            android:onClick="@{doClick}"
+            android:layout_marginRight="10dp"
+            android:textSize="14sp"
+            android:textColor="#C3C3C3"
+            android:text="举报"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_give_like"
+            android:drawableLeft="@drawable/sharemall_selector_coment_love"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="5dp"
+            android:onClick="@{doClick}"
+            android:button="@null"
+            android:textSize="14sp"
+            android:checked="@{TextUtils.equals(item.is_zan,@string/one)}"
+            android:textColor="@color/gray_99"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_create_time"
+            android:layout_alignLeft="@id/tv_create_time"
+            android:layout_marginTop="7dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:textSize="13sp"
+            tools:text="来自热带气候秘鲁，光照更充足，果肉绵滑有淡淡乳酪香天然的“植光照更充足，果肉绵滑有淡淡乳酪光照更充……"
+            android:layout_alignStart="@id/tv_create_time" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_travel_type"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/sharemall_filter_down"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
+        android:textColor="@color/color333"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:singleLine="true"
+        tools:text="综合" />
+</LinearLayout>

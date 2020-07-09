@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.AddressEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#ffffff">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{doClick}"
+            android:visibility="@{TextUtils.isEmpty(item.maid) ? View.GONE : View.VISIBLE}"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp"
+                android:text="@{item.name}"
+                android:textColor="#ff1d1e1f"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="吴娟" />
+
+            <TextView
+                android:id="@+id/tv_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{item.tel}"
+                android:textColor="#ff999999"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/textView17"
+                tools:text="15700000000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="10dp"
+                android:text="@{item.full_name}"
+                android:textColor="#ff555555"
+                android:singleLine="true"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tel"
+                tools:text="浙江省杭州市余杭区中尚橄榄树花园南区21幢5单元" />
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="9dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="16dp"
+            android:background="@mipmap/baselib_ic_right_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_no_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:text="@string/sharemall_add_address_hint"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="@{TextUtils.isEmpty(item.maid) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:background="@color/gray_F7"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

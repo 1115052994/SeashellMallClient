@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.coupon.CouponEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        setMarginTop="@{position == 0 ? @dimen/d_15 : @dimen/dp_0}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="18dp">
+
+                <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+                    android:id="@+id/mutv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.formatMoney(item.discount_num)}"
+                    android:textColor="@color/bgColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="¥5" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/mutv_price"
+                    android:layout_alignBottom="@id/mutv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/sharemall_format_can_use_rule(item.condition_num)}"
+                        android:textColor="#ff333333"
+                        android:textSize="12sp"
+                        tools:text="满60元可用" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:background="@drawable/sharemall_radius_6dp_ff9241"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp"
+                        android:text="@{item.itemTypeValue}"
+                        android:textColor="#ffffffff"
+                        android:textSize="6sp"
+                        tools:text="平台通用券" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mutv_price"
+                    android:layout_marginTop="6dp"
+                    android:text="@{item.couponDate()}"
+                    android:textColor="#ff999999"
+                    android:textSize="10sp"
+                    tools:text="有效期：2018.12.01 - 2018.12.30" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@{item.is_accept == 1 ? @drawable/sharemall_gradient_80ff9241 : @drawable/sharemall_gradient_ef574c }"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                tools:background="#80ff9241">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.is_accept == 1 ? @string/sharemall_collected : @string/sharemall_collect }"
+                    android:textColor="#ffffffff"
+                    android:textSize="12sp"
+                    android:ems="3"
+                    android:gravity="center"
+                    tools:text="已领取" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</layout>

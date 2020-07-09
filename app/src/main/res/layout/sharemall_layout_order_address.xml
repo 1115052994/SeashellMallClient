@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.liemi.seashellmallclient.data.entity.AddressEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:onClick="@{doClick}"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/sharemall_add_address_tips"
+            android:textColor="#ff999999"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="@{TextUtils.isEmpty(address.maid) ? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_address_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/iv_address_right"
+            android:text="@{@string/sharemall_format_address_nickname(address.name, address.tel)}"
+            android:textColor="#ff393939"
+            android:textSize="18sp"
+            android:visibility="@{TextUtils.isEmpty(address.maid) ? View.GONE : View.VISIBLE}"
+            tools:text="秦淑桦（15157239111）" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_address_name"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@id/iv_address_right"
+            android:text="@{@string/sharemall_format_address_fullname(address.full_name)}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            android:visibility="@{TextUtils.isEmpty(address.maid) ? View.GONE : View.VISIBLE}"
+            tools:text="地址：浙江省杭州市江干区下沙街道6号大街新加坡科技园 11幢88楼 8802" />
+
+        <ImageView
+            android:id="@+id/iv_address_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/sharemall_ic_right_gray" />
+
+    </RelativeLayout>
+
+</layout>

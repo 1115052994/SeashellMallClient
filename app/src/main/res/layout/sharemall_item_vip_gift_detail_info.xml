@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.good.GoodsDetailedEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="14dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="15dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.title}"
+            android:textColor="#1D1E1F"
+            android:textSize="14sp"
+            tools:text="进口白咖啡 ] 经典口味 口感醇厚 金爸爸经典10条装" />
+
+        <com.liemi.seashellmallclient.widget.MoneyUnitTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="43dp"
+            android:text="@{item.getShowPrice()}"
+            android:textColor="@color/bgColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="30.3"/>
+
+        <TextView
+            android:id="@+id/tv_postage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="82dp"
+            android:drawableLeft="@mipmap/sharemall_ic_free"
+            android:drawablePadding="5dp"
+            android:text="@string/sharemall_free_shipping"
+            android:textColor="#ff999999"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="82dp"
+            android:drawableStart="@mipmap/sharemall_buy_num"
+            android:drawableLeft="@mipmap/sharemall_buy_num"
+            android:drawablePadding="5dp"
+            android:text="@{@string/sharemall_format_buy_people_num(item.deal_num)}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            tools:text="1000人购买"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="82dp"
+            android:layout_marginRight="15dp"
+            android:drawableStart="@mipmap/sharemall_ic_address"
+            android:drawableLeft="@mipmap/sharemall_ic_address"
+            android:drawablePadding="5dp"
+            android:maxLength="3"
+            android:text="@{item.shop.full_name}"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            tools:text="北京市北京市" />
+    </RelativeLayout>
+</layout>

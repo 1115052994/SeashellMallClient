@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.category.GoodsTwoCateEntity" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <TextView
+        setMarginTop="@{position == 0 ? @dimen/d_8 : @dimen/dp_0}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableEnd="@mipmap/sharemall_ic_right_gray"
+        android:drawableRight="@mipmap/sharemall_ic_right_gray"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@{item.name}"
+        android:layout_marginBottom="1dp"
+        android:textColor="@color/black_1d1e1f"
+        android:textSize="15sp" />
+
+</layout>

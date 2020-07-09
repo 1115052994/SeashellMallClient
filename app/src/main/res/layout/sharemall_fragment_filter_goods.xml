@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/sharemall_radius_ltrt8dp_ff"
+        android:elevation="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_comprehensive"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.liemi.seashellmallclient.widget.SkinPopTabView
+                    android:id="@+id/ptv_comprehensive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tab_text_color_focus="@color/bgColor"
+                    app:tab_text_color_normal="@color/gray_99" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="12dp"
+                android:background="@color/gray_EE"/>
+
+            <LinearLayout
+                android:id="@+id/ll_sales"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="12dp"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawablePadding="6dp"
+                    android:enabled="false"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="@string/sharemall_sales_volume"
+                    android:textColor="@drawable/sharemall_selector_tab_txt_ba8d49"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/sharemall_ic_sort_price" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="12dp"
+                android:background="@color/gray_EE"/>
+
+            <LinearLayout
+                android:id="@+id/ll_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawablePadding="6dp"
+                    android:enabled="false"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="@string/sharemall_price"
+                    android:textColor="@drawable/sharemall_selector_tab_txt_ba8d49"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/sharemall_ic_sort_price" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_sort"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+</layout>
+
+
+

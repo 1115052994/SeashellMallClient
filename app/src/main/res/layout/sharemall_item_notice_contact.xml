@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.contacts.RecentContactEntity" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/layout_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            civPath="@{item.logo_url}"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="12dp"
+            tools:src="@drawable/baselib_bg_default_circle_pic" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/iv_icon"
+            android:layout_toLeftOf="@id/tv_date">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:text="@{item.name}"
+                android:textColor="#1D1E1F"
+                android:maxLines="1"
+                android:maxEms="13"
+                android:ellipsize="end"
+                android:textSize="15sp"
+                tools:text="物流通知物流通知物流通知物流通知物流通知物流通知" />
+
+            <ImageView
+                android:id="@+id/msg_num_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sharemall_oval_6dp_ff4343"
+                android:layout_marginEnd="6dp"
+                android:visibility="@{item.all_no_readnum == 0 ? View.GONE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_title"
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@id/tv_date"
+            android:layout_toRightOf="@id/iv_icon"
+            android:singleLine="true"
+            android:text="@{item.title}"
+            android:textColor="#999999"
+            android:textSize="13sp"
+            tools:text="你的5元金币48小时内过期，机会难…" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:text="@{item.create_time}"
+            android:textColor="#C0C0C0"
+            android:textSize="12sp"
+            tools:text="今天 10:33" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_content"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@id/iv_icon"
+            android:background="@color/gray_EE" />
+    </RelativeLayout>
+</layout>

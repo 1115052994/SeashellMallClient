@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.mine.address.AddressManageActivity">
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_F2"
+            android:orientation="vertical">
+
+        <include
+                android:id="@+id/layout_title"
+                layout="@layout/sharemall_include_title_bar" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/xrv_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/layout_title"
+                android:descendantFocusability="blocksDescendants"
+                android:overScrollMode="never" />
+
+    </RelativeLayout>
+
+</layout>

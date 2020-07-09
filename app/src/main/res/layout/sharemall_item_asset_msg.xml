@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.seashellmallclient.data.entity.article.ShopCartArticleEntity" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_time"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_toLeftOf="@id/tv_time"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:text="@{item.title}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="15sp"
+                    tools:text="优惠券过期提醒" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sharemall_oval_6dp_ff4343"
+                    android:visibility="@{item.is_read == 1 ? View.GONE : View.VISIBLE}"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_title"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:text="@{item.remark}"
+            android:textColor="#ff999999"
+            android:textSize="13sp"
+            tools:text="您的“优惠券名称“在24小时内即将过期，抓紧去使用吧！" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@{item.getMMDDDCreate_time()}"
+            android:textColor="#ffc0c0c0"
+            android:textSize="12sp"
+            tools:text="今天 10:33" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.vip.VIPFollowerActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F6F6F7"
+        android:orientation="vertical">
+
+        <include layout="@layout/sharemall_include_title_bar" />
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/tl_title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            app:tl_indicator_color="@color/bgColor"
+            app:tl_indicator_height="2dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="@color/gray_33"
+            app:tl_textUnselectColor="#555555"
+            app:tl_textsize="15sp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</layout>

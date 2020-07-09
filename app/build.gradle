@@ -1,0 +1,194 @@
+apply plugin: 'com.android.application'
+apply plugin: "com.mob.sdk"
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 6
+        versionName "1.0.5"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        manifestPlaceholders = [
+                //个推应用参数，请填写您申请的 GETUI_APP_ID，GETUI_APP_KEY，GETUI_APP_SECRET 值
+                GETUI_APP_ID    : "HvSJ7zAgsCAZC8spNpf3i9",
+                GETUI_APP_KEY   : "6LEk8AmqbQ9P3cbbGDFk87",
+                GETUI_APP_SECRET: "FFthSnhmcf8YPENHzdnVU5",
+        ]
+
+        // 开启multidex
+        multiDexEnabled true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        releaseConfig {
+            storeFile file('liemi.jks')
+            storePassword '123456'
+            keyAlias 'liemi'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+
+        develop {
+            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-pink', 'src/main/res-green', 'src/main/res-blue',
+                           'src/main/res-red', 'src/main/res-cyan', 'src/main/res-black']
+
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []
+        }
+    }
+/*
+    packagingOptions {
+        exclude 'assets/location_map_gps_locked.png'
+        exclude 'assets/location_map_gps_3d.png'
+    }
+*/
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:multidex:1.0.1'
+    api project(':baselib')
+
+    //屏幕适配
+    implementation 'me.jessyan:autosize:1.1.1'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'org.jsoup:jsoup:1.10.1'
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+
+    //jg包
+    implementation 'com.tencent.jg:jg:1.1'
+
+    //wup包
+    implementation 'com.tencent.wup:wup:1.0.0.E-release'
+
+    //mid包
+    implementation 'com.tencent.mid:mid:4.0.6-release'
+
+    //流式布局(类似热门标签)
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+    //文字轮播控件
+    implementation 'com.superluo:textbannerview:1.0.2'
+    implementation('com.alibaba.android:ultraviewpager:1.0.7.8@aar') {
+        transitive = true
+    }
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+
+    //流式布局(显示多图)
+    implementation 'com.google.android:flexbox:1.0.0'
+
+    //Glide图片变换
+    implementation 'jp.wasabeef:glide-transformations:4.0.1'
+
+    //视频播放
+    implementation 'cn.jzvd:jiaozivideoplayer:6.4.1'
+
+    //智齿客服系统
+    implementation project(':sobotsdk')
+
+    //引导页蒙版
+    implementation 'com.github.huburt-Hu:NewbieGuide:v2.4.2'
+
+    //类似IOS的开关控件
+    api 'com.github.zcweng:switch-button:0.0.3@aar'
+    api 'me.everything:overscroll-decor-android:1.0.4'
+    api 'me.leolin:ShortcutBadger:1.1.17@aar'
+    implementation 'skin.support:skin-support:3.1.1'
+
+    // skin-support 基础控件支持
+    implementation 'skin.support:skin-support-design:3.1.1'
+
+    // skin-support-design material design 控件支持[可选]
+    implementation 'skin.support:skin-support-cardview:3.1.1'
+
+    // skin-support-cardview CardView 控件支持[可选]
+    implementation 'skin.support:skin-support-constraint-layout:3.1.1'
+
+    // skin-support-constraint-layout ConstraintLayout 控件支持[可选]
+
+    // kotlin核心库
+    api 'org.jetbrains.anko:anko:0.10.8'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation files('libs/alipaySdk-20180403.jar')
+    api 'com.github.nanchen2251:CompressHelper:1.0.6'
+
+    //阿里云视频
+    implementation 'com.aliyun.video.android:upload:1.5.2'
+    implementation 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
+    implementation 'com.alivc.conan:AlivcConan:0.9.5'
+
+    //个推
+    implementation 'com.getui:sdk:2.14.0.0'
+    implementation files('src/main/jniLibs/BaiduLBS_Android.jar')
+
+    //长图
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
+}
+
+MobSDK {
+    appKey "2e520d6df7d32"
+    appSecret "b4d9061dd689789fa2a4ab18fb614eaa"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            Wechat {
+                appId "wx5f0731c28fbaf58d"
+                appSecret "56bc441b83ede3c060aaaab097babd49"
+            }
+            WechatMoments {
+                appId "wx5f0731c28fbaf58d"
+                appSecret "56bc441b83ede3c060aaaab097babd49"
+            }
+        }
+    }
+}

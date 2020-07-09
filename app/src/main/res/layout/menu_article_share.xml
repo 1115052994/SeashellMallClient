@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_share"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="分享"
+            android:textColor="#ff333333"
+            android:textSize="18sp" />
+        <View
+            android:background="@color/theme_bg"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"/>
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="取消"
+            android:textColor="#ff333333"
+            android:textSize="18sp" />
+    </LinearLayout>
+</layout>
